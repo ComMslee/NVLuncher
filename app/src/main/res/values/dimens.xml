@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="margin_120dp">120dp</dimen>
+    <dimen name="padding_10dp">10dp</dimen>
+    <dimen name="padding_20dp">20dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_60dp">60dp</dimen>
+    <dimen name="size_64dp">64dp</dimen>
+    <dimen name="size_20dp">20dp</dimen>
+    <dimen name="text_size_32sp">32sp</dimen>
+    <dimen name="text_size_24sp">24dp</dimen>
+    <dimen name="text_size_16sp">16sp</dimen>
+
+    <dimen name="layout_view_top_bar_top_side_bar_w">118px</dimen>
+    <dimen name="layout_view_top_bar_top_side_bar_h">60px</dimen>
+    <dimen name="layout_view_top_bar_top_center_w">312px</dimen>
+    <dimen name="layout_view_top_bar_top_center_h">52px</dimen>
+    <dimen name="layout_view_top_bar_top_center_text">20px</dimen>
+
+    <dimen name="layout_applist_margin_top">50px</dimen>
+    <dimen name="layout_applist_padding_l">40px</dimen>
+    <dimen name="layout_applist_padding_r">40px</dimen>
+
+    <dimen name="layout_clock_tvtime_textsize">20px</dimen>
+
+    <dimen name="layout_barbutton_bar_ly_bar_h">62px</dimen>
+
+    <drawable name="main_bg">@drawable/main_bg_800</drawable>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">8dp</dimen>
+
+</resources>

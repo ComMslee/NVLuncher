@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="logos">
+        <item>@drawable/nv_oreo_logo_android</item>
+        <item>@drawable/nv_oreo_logo_audi</item>
+        <item>@drawable/nv_oreo_logo_bentley</item>
+        <item>@drawable/nv_oreo_logo_bmw</item>
+        <item>@drawable/nv_oreo_logo_cadillac</item>
+        <item>@drawable/nv_oreo_logo_chevy</item>
+        <item>@drawable/nv_oreo_logo_chrysler</item>
+        <item>@drawable/nv_oreo_logo_citroen</item>
+        <item>@drawable/nv_oreo_logo_dodge</item>
+        <item>@drawable/nv_oreo_logo_dodge_ram</item>
+        <item>@drawable/nv_oreo_logo_ferrari</item>
+        <item>@drawable/nv_oreo_logo_fiat</item>
+        <item>@drawable/nv_oreo_logo_ford</item>
+        <item>@drawable/nv_oreo_logo_genesis</item>
+        <item>@drawable/nv_oreo_logo_gmc</item>
+        <item>@drawable/nv_oreo_logo_hd</item>
+        <item>@drawable/nv_oreo_logo_jaguar</item>
+        <item>@drawable/nv_oreo_logo_jeep</item>
+        <item>@drawable/nv_oreo_logo_kia</item>
+        <item>@drawable/nv_oreo_logo_korando</item>
+        <item>@drawable/nv_oreo_logo_lamborghini</item>
+        <item>@drawable/nv_oreo_logo_land_rover</item>
+        <item>@drawable/nv_oreo_logo_lexus</item>
+        <item>@drawable/nv_oreo_logo_lincoln</item>
+        <item>@drawable/nv_oreo_logo_man</item>
+        <item>@drawable/nv_oreo_logo_maserati</item>
+        <item>@drawable/nv_oreo_logo_mazda</item>
+        <item>@drawable/nv_oreo_logo_mercedes_benz</item>
+        <item>@drawable/nv_oreo_logo_nissan</item>
+        <item>@drawable/nv_oreo_logo_opel</item>
+        <item>@drawable/nv_oreo_logo_peugeot</item>
+        <item>@drawable/nv_oreo_logo_porsche</item>
+        <item>@drawable/nv_oreo_logo_rexton</item>
+        <item>@drawable/nv_oreo_logo_rolls_royce</item>
+        <item>@drawable/nv_oreo_logo_scania</item>
+        <item>@drawable/nv_oreo_logo_skoda</item>
+        <item>@drawable/nv_oreo_logo_subaru</item>
+        <item>@drawable/nv_oreo_logo_tivoli</item>
+        <item>@drawable/nv_oreo_logo_toyota</item>
+        <item>@drawable/nv_oreo_logo_turismo</item>
+        <item>@drawable/nv_oreo_logo_volvo</item>
+        <item>@drawable/nv_oreo_logo_vw</item>
+    </array>
+
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/bg_top_left" android:gravity="start"/>
+    <item android:drawable="@drawable/bg_top_date" android:gravity="center_horizontal" android:height="78dp"/>
+    <item android:drawable="@drawable/bg_top_right" android:gravity="end"/>
+</layer-list>

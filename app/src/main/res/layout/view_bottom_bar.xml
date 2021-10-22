@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_bar_ly_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="false">
+
+    <LinearLayout
+        android:id="@+id/bottom_bar_ly_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_barbutton_bar_ly_bar_h"
+        android:background="@drawable/bg_bottom_bar"
+        android:filterTouchesWhenObscured="true">
+
+        <ImageView
+            android:id="@+id/bottom_bar_image_view_voice"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_voice"
+            tools:ignore="ContentDescription" />
+
+
+        <ImageView
+            android:id="@+id/bottom_bar_image_view_sound"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_sound"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bottom_bar_image_view_running_app_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_running_app_list"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bottom_bar_image_view_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_back"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bottom_bar_image_view_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bottom_bar_image_view_zoom_in"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_zoom_in"
+            android:visibility="gone"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bottom_bar_image_view_zoom_out"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_zoom_out"
+            android:visibility="gone"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bottom_bar_image_view_wifi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_wifi"
+            tools:ignore="ContentDescription" />
+
+
+        <ImageView
+            android:id="@+id/bottom_bar_image_view_app_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_app_list"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bottom_bar_image_view_setting"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/btm_icon_10"
+            app:tint="@color/white"
+
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_bar_hide"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.5"></androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+
+    <LinearLayout
+        android:id="@+id/home_ly_widget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/main_image_view_logo"></LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/home_ly_widget_left"
+        android:layout_width="200px"
+        android:layout_height="108px"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/main_image_view_logo"
+        app:layout_constraintEnd_toStartOf="@+id/main_image_view_logo"
+        app:layout_constraintTop_toTopOf="@+id/main_image_view_logo">
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/main_image_view_logo"
+        android:layout_width="312px"
+        android:layout_height="108px"
+        android:layout_marginTop="60px"
+        android:src="@drawable/nv_oreo_logo_android"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+
+    <LinearLayout
+        android:id="@+id/home_ly_widget_right"
+        android:layout_width="200px"
+        android:layout_height="108px"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/main_image_view_logo"
+        app:layout_constraintStart_toEndOf="@+id/main_image_view_logo"
+        app:layout_constraintTop_toTopOf="@+id/main_image_view_logo">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/main_linear_layout_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40px"
+        android:layout_marginRight="40px"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_image_view_logo"
+        tools:ignore="DisableBaselineAlignment">
+
+        <LinearLayout
+            android:id="@+id/hoem_ly_app_one"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/home_iv_one"
+                android:layout_width="180px"
+                android:layout_height="135px"
+                android:src="@drawable/bg_selector_navigation"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:layout_width="180px"
+                android:layout_height="38px"
+                android:src="@drawable/bg_selector_navigation_txt"
+                tools:ignore="ContentDescription" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hoem_ly_app_two"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/home_iv_two"
+                android:layout_width="180px"
+                android:layout_height="135px"
+                android:src="@drawable/bg_selector_video"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:layout_width="180px"
+                android:layout_height="38px"
+                android:src="@drawable/bg_selector_video_txt"
+                tools:ignore="ContentDescription" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hoem_ly_app_three"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/home_iv_three"
+                android:layout_width="180px"
+                android:layout_height="135px"
+                android:src="@drawable/bg_selector_music"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:layout_width="180px"
+                android:layout_height="38px"
+                android:src="@drawable/bg_selector_music_txt"
+                tools:ignore="ContentDescription" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hoem_ly_app_four"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/home_iv_four"
+                android:layout_width="180px"
+                android:layout_height="135px"
+                android:src="@drawable/bg_selector_ineternet"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:layout_width="180px"
+                android:layout_height="38px"
+                android:src="@drawable/bg_selector_ineternet_txt"
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_lyfmt"
+        android:layout_width="244px"
+        android:layout_height="270px"
+        android:background="@drawable/m_btm_right_icon_bg"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/home_iv_fmt"
+            android:layout_width="118px"
+            android:layout_height="60px"
+            android:clickable="true"
+            android:src="@drawable/m_btm_right_icon_on"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

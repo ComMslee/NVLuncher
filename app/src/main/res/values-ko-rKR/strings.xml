@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Navigation</string>
+    <string name="confirm">확인</string>
+    <string name="cancle">취소</string>
+    <string name="choose_the_logo">로고 선택</string>
+    <string name="choose_the_app">앱 선택</string>
+</resources>

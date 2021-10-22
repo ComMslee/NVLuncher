@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_checked_wifi.xml" value="0.3463541666666667" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_ineternet.xml" value="0.3463541666666667" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_ineternet_txt.xml" value="0.3463541666666667" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_minus.xml" value="0.3463541666666667" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_music.xml" value="0.3463541666666667" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_navigation.xml" value="0.3463541666666667" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_plus.xml" value="0.3463541666666667" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_state_check.xml" value="0.3463541666666667" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_state_off.xml" value="0.3463541666666667" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/ic_arrow_white_24.xml" value="0.3463541666666667" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-h1080dp/activity_main.xml" value="0.2" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-h1080dp/fragment_home.xml" value="0.33" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-h480dp/activity_main.xml" value="0.67" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-h480dp/activity_radio.xml" value="0.67" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-h600dp/fragment_home.xml" value="0.33" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-h720dp/activity_radio.xml" value="0.33" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-h720dp/fragment_home.xml" value="0.25" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-h720dp/item_app.xml" value="0.3302083333333333" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-sw1080dp/fragment_app_list.xml" value="0.13489583333333333" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-sw1080dp/fragment_home.xml" value="0.25" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-sw720dp/fragment_app_list.xml" value="0.1798611111111111" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-sw720dp/fragment_home.xml" value="0.2569593147751606" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-sw720dp/item_app.xml" value="0.33" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-sw720dp/view_bottom_bar.xml" value="0.1" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-sw720dp/view_top_bar.xml" value="0.18" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-sw720dp/viewpager_item.xml" value="0.1" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/activity_radio.xml" value="0.67" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/fragment_app_list.xml" value="0.11724856696195936" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/item_app.xml" value="0.18" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/n_v_clock.xml" value="0.9936708860759493" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/view_top_bar.xml" value="0.2" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/viewpager_item.xml" value="0.11724856696195936" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
