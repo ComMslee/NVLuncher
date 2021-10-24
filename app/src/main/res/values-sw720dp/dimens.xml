@@ -6,21 +6,40 @@
     <dimen name="margin_20dp">20dp</dimen>
     <dimen name="margin_8dp">8dp</dimen>
     <dimen name="margin_60dp">60dp</dimen>
-    <dimen name="size_64dp">64dp</dimen>
     <dimen name="size_20dp">20dp</dimen>
     <dimen name="text_size_32sp">32sp</dimen>
     <dimen name="text_size_24sp">24dp</dimen>
-    <dimen name="text_size_16sp">16sp</dimen>
 
-    <dimen name="layout_view_top_bar_top_side_bar_w">196px</dimen>
-    <dimen name="layout_view_top_bar_top_side_bar_h">90px</dimen>
-    <dimen name="layout_view_top_bar_top_center_w">468px</dimen>
-    <dimen name="layout_view_top_bar_top_center_h">76px</dimen>
-    <dimen name="layout_view_top_bar_top_center_text">25px</dimen>
+    <dimen name="logo_w">468dp</dimen>
+    <dimen name="logo_h">162dp</dimen>
 
-    <dimen name="layout_applist_margin_top">80px</dimen>
-    <dimen name="layout_clock_tvtime_textsize">34px</dimen>
-    <dimen name="layout_barbutton_bar_ly_bar_h">95px</dimen>
+    <dimen name="side_w">350dp</dimen>
+    <dimen name="side_h">454dp</dimen>
+
+    <dimen name="iv_w">290dp</dimen>
+    <dimen name="iv_h">222dp</dimen>
+    <dimen name="iv_title_w">300dp</dimen>
+    <dimen name="iv_title_h">80dp</dimen>
+
+    <dimen name="item_w">110dp</dimen>
+    <dimen name="item_h">110dp</dimen>
+    <dimen name="item_text_size">42sp</dimen>
+    <dimen name="item_margin_bottom">25dp</dimen>
+
+    <dimen name="fmt_w">318dp</dimen>
+    <dimen name="fmt_h">260dp</dimen>
+
+
+    <!---->
+    <dimen name="layout_view_top_bar_top_side_bar_w">196dp</dimen>
+    <dimen name="layout_view_top_bar_top_side_bar_h">90dp</dimen>
+    <dimen name="layout_view_top_bar_top_center_w">468dp</dimen>
+    <dimen name="layout_view_top_bar_top_center_h">76dp</dimen>
+    <dimen name="layout_view_top_bar_top_center_text">30dp</dimen>
+
+    <dimen name="layout_applist_margin_top">80dp</dimen>
+    <dimen name="layout_clock_tvtime_textsize">34dp</dimen>
+    <dimen name="layout_barbutton_bar_ly_bar_h">95dp</dimen>
 
     <drawable name="main_bg">@drawable/main_bg_1920</drawable>
 

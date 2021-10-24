@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".AppListFragment">
 
-
-
-
 <!--    <com.external.navigation.indecator.CirclePageIndicator-->
 <!--        android:id="@+id/app_list_indicator"-->
 <!--        android:layout_width="match_parent"-->
@@ -25,15 +22,10 @@
         android:id="@+id/app_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/layout_applist_margin_top"
         android:paddingLeft="@dimen/layout_applist_padding_l"
         android:paddingRight="@dimen/layout_applist_padding_r"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,9 +9,11 @@
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_minus.xml" value="0.3463541666666667" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_music.xml" value="0.3463541666666667" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_navigation.xml" value="0.3463541666666667" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_play_store.xml" value="0.3463541666666667" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_plus.xml" value="0.3463541666666667" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_state_check.xml" value="0.3463541666666667" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_selector_state_off.xml" value="0.3463541666666667" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_top_bar.xml" value="0.3463541666666667" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/drawable/ic_arrow_white_24.xml" value="0.3463541666666667" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-h1080dp/activity_main.xml" value="0.2" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-h1080dp/fragment_home.xml" value="0.33" />
@@ -29,13 +31,13 @@
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-sw720dp/view_bottom_bar.xml" value="0.1" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-sw720dp/view_top_bar.xml" value="0.18" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout-sw720dp/viewpager_item.xml" value="0.1" />
-        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/activity_radio.xml" value="0.67" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/fragment_app_list.xml" value="0.11724856696195936" />
-        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/fragment_home.xml" value="0.5" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/item_app.xml" value="0.18" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/n_v_clock.xml" value="0.9936708860759493" />
-        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/view_top_bar.xml" value="0.2" />
+        <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/view_top_bar.xml" value="0.33" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/viewpager_item.xml" value="0.11724856696195936" />
       </map>
     </option>
