@@ -18,12 +18,15 @@
 
     <dimen name="iv_w">290dp</dimen>
     <dimen name="iv_h">222dp</dimen>
-    <dimen name="iv_title_w">300dp</dimen>
-    <dimen name="iv_title_h">80dp</dimen>
+    <dimen name="iv_title_w">290dp</dimen>
+    <dimen name="iv_title_h">70dp</dimen>
 
-    <dimen name="item_w">110dp</dimen>
-    <dimen name="item_h">110dp</dimen>
-    <dimen name="item_text_size">42sp</dimen>
+    <dimen name="item_w">95dp</dimen>
+    <dimen name="item_h">95dp</dimen>
+    <dimen name="item_text_w">140dp</dimen>
+    <dimen name="item_text_h">50dp</dimen>
+    <dimen name="item_text_size_min">24sp</dimen>
+    <dimen name="item_text_size_max">28sp</dimen>
     <dimen name="item_margin_bottom">25dp</dimen>
 
     <dimen name="fmt_w">318dp</dimen>

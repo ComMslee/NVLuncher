@@ -1,6 +1,6 @@
 package com.nv.nvluncher
 
-
+import android.R.attr
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -26,88 +26,26 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_bottom_bar.view.*
 import java.util.*
 import kotlin.collections.ArrayList
+import android.R.attr.name
+import java.lang.Exception
+import java.lang.String
+import java.lang.Thread.sleep
 
 
 class MainActivity : AppCompatActivity() {
     private val ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE: Int = 2000
 
-    companion object{
+    companion object {
         var position = 0
-        var preAppData : ArrayList<AppData>? = ArrayList()
-    }
-
-    class ButtonReceiver : BroadcastReceiver() {
-
-        var vp : ViewPager2? = null
-        override fun onReceive(context: Context?, intent: Intent) {
-            // TODO: This method is called when the BroadcastReceiver is receiving
-            // an Intent broadcast.
-            //각 방송 정보는 intent로 전달됨
-            Log.e("ddd", "dddd")
-            when(intent.action){
-                ACTION_HOME -> {
-                    vp?.setCurrentItem(0, true)
-                }
-                ACTION_APP -> {
-                    vp?.setCurrentItem(1, true)
-                }
-                ACTION_BAR -> {
-                    val adapter = vp?.adapter
-                    if (adapter is PagerAdapter) {
-                        adapter.homeFragment?.hideAlert()
-                    }
-                }
-                ACTION_PACKAGE_REMOVED,
-                ACTION_PACKAGE_REPLACED,
-                ACTION_PACKAGE_ADDED -> {
-                    vp?.setCurrentItem(1, true)
-                    val adapter = vp?.adapter
-                    if (adapter is PagerAdapter) {
-                        adapter.appListFragment?.reload()
-                    }
-                }
-            }
-
-        }
-
-        companion object {
-            const val ACTION_HOME = "com.nv.nvluncher.ACTION_HOME"
-            const val ACTION_APP = "com.nv.nvluncher.ACTION_APP"
-            const val ACTION_BAR = "android.intent.action.lb.navbaropt"
-        }
-    }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-
-
-
-        var mode = intent?.getIntExtra("mode", -1)
-
-        if (mode == 1) {    // ALL APPS
-            viewPager?.setCurrentItem(1, true)
-        } else {             // HOME
-            viewPager?.setCurrentItem(0, true)
-
-        }
+        var preAppData: ArrayList<AppData>? = ArrayList()
     }
 
     private var receiver: ButtonReceiver? = null
     private var contentObserver: ContentObserver? = null
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
-    }
-
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -115,14 +53,8 @@ class MainActivity : AppCompatActivity() {
         load()
         setContentView(R.layout.activity_main)
 
-
-
         receiver = ButtonReceiver()
         receiver?.vp = viewPager
-
-
-
-
 
 //        bottom_bar_image_view_app_list.setOnClickListener {
 //            startActivity(Intent(this, AppListActivity::class.java))
@@ -131,19 +63,11 @@ class MainActivity : AppCompatActivity() {
 //            startActivity(Intent(this, RadioActivity::class.java))
 //        }
 
-        viewPager.offscreenPageLimit=5
+        viewPager.offscreenPageLimit = 5
         viewPager.adapter = PagerAdapter(this)
         main_bottombar.pager = viewPager
 
-
-
-
-
-
-
         var sel = Util.getSharedPreferences(this)!!.getInt(SharedPreferencesKeys.BAR, 0)
-
-
 
         viewPager.currentItem = MainActivity.position
 
@@ -168,7 +92,6 @@ class MainActivity : AppCompatActivity() {
 //        }
 
         init()
-
 
         contentObserver = object : ContentObserver(Handler(mainLooper)) {
             override fun onChange(selfChange: Boolean) {
@@ -195,12 +118,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    public fun load(){
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        var mode = intent?.getIntExtra("mode", -1)
+
+        if (mode == 1) {    // ALL APPS
+            viewPager?.setCurrentItem(1, true)
+        } else {             // HOME
+            viewPager?.setCurrentItem(0, true)
+
+        }
+    }
+
+    fun load() {
         var models = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
-        for(i in 0 until models.size){
-//        for(i in 0..30){
+        for (i in 0 until models.size) {
             var model = models[i]
-            if(packageManager.getLaunchIntentForPackage(model.packageName) != null) {
+            if (packageManager.getLaunchIntentForPackage(model.packageName) != null) {
                 preAppData?.add(
                     AppData(
                         model.loadLabel(packageManager),
@@ -209,29 +143,21 @@ class MainActivity : AppCompatActivity() {
                     )
                 )
             }
-
         }
-
-
     }
 
     override fun onResume() {
         super.onResume()
-        val filter = IntentFilter()
-
-        filter.addAction(ButtonReceiver.ACTION_HOME)
-        filter.addAction(ButtonReceiver.ACTION_APP)
-        filter.addAction(ButtonReceiver.ACTION_BAR)
-        filter.addAction(Intent.ACTION_PACKAGE_ADDED)
-        filter.addAction(Intent.ACTION_PACKAGE_REPLACED)
-        filter.addAction(Intent.ACTION_PACKAGE_REMOVED)
-        filter.addDataScheme("package")
-        registerReceiver(receiver, filter)
-
-
-
-
-
+        IntentFilter().apply {
+            addAction(ButtonReceiver.ACTION_HOME)
+            addAction(ButtonReceiver.ACTION_APP)
+            addAction(ButtonReceiver.ACTION_BAR)
+            addAction(Intent.ACTION_PACKAGE_ADDED)
+            addAction(Intent.ACTION_PACKAGE_REPLACED)
+            addAction(Intent.ACTION_PACKAGE_REMOVED)
+            addDataScheme("package")
+            registerReceiver(receiver, this)
+        }
     }
 
     override fun onPause() {
@@ -243,10 +169,10 @@ class MainActivity : AppCompatActivity() {
     private fun setWindowFlag(bits: Int, on: Boolean) {
         val win = window ?: return
         val winParams = win.attributes
-        if (on) {
-            winParams.flags = winParams.flags or bits
+        winParams.flags = if (on) {
+            winParams.flags or bits
         } else {
-            winParams.flags = winParams.flags and bits.inv()
+            winParams.flags and bits.inv()
         }
         win.attributes = winParams
     }
@@ -256,7 +182,6 @@ class MainActivity : AppCompatActivity() {
 //            getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
 //        var view = BottomBarView(applicationContext)
 //        view.pager = viewPager
-
 
 
 //        var manager =
@@ -284,8 +209,6 @@ class MainActivity : AppCompatActivity() {
 //        windowManager.addView(view, params)
 
 
-
-
 //        view.bottom_bar_hide.setOnClickListener {
 //            view.bottom_bar_ly_bar.visibility = View.VISIBLE
 //            view.bottom_bar_hide.visibility = View.GONE
@@ -294,48 +217,77 @@ class MainActivity : AppCompatActivity() {
 //        }
 //
 //        setTimer(view)
-
-
-
         setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
     }
 
-    fun setTimer(view: View){
-
+    fun setTimer(view: View) {
         var timerTask = object : TimerTask() {
             override fun run() {
                 view.post {
                     view.bottom_bar_ly_bar.visibility = View.GONE
                     view.bottom_bar_hide.visibility = View.VISIBLE
-
                 }
             }
-
         }
-
         Timer().schedule(timerTask, 5000)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode==ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE){
+        if (requestCode == ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE) {
             init()
         }
     }
 
 
     override fun onBackPressed() {
-
     }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        return if (keyCode == KeyEvent.KEYCODE_BACK) {
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean =
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             false
-        }else{
+        } else {
             super.onKeyDown(keyCode, event)
         }
 
+    class ButtonReceiver : BroadcastReceiver() {
+        companion object {
+            const val ACTION_HOME = "com.nv.nvluncher.ACTION_HOME"
+            const val ACTION_APP = "com.nv.nvluncher.ACTION_APP"
+            const val ACTION_BAR = "android.intent.action.lb.navbaropt"
+        }
 
+        var vp: ViewPager2? = null
+        override fun onReceive(context: Context?, intent: Intent) {
+            // an Intent broadcast.
+            //각 방송 정보는 intent로 전달됨
+            Log.e("ddd", "dddd")
+            when (intent.action) {
+                ACTION_HOME -> {
+                    vp?.setCurrentItem(0, true)
+                }
+
+                ACTION_APP -> {
+                    vp?.setCurrentItem(1, true)
+                }
+
+                ACTION_BAR -> {
+                    val adapter = vp?.adapter
+                    if (adapter is PagerAdapter) {
+                        adapter.homeFragment?.hideAlert()
+                    }
+                }
+
+                ACTION_PACKAGE_REMOVED,
+                ACTION_PACKAGE_REPLACED,
+                ACTION_PACKAGE_ADDED -> {
+                    vp?.setCurrentItem(1, true)
+                    val adapter = vp?.adapter
+                    if (adapter is PagerAdapter) {
+                        adapter.appListFragment?.reload()
+                    }
+                }
+            }
+        }
     }
-
 }

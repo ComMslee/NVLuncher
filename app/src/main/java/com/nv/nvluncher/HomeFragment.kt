@@ -37,10 +37,10 @@ class HomeFragment : Fragment() {
     lateinit var alertImages: AlertDialog
     lateinit var apps: ArrayList<AppData>
     var choice = 0
-    var REQUEST_PICK_APPWIDGET_LEFT: Int = 20000
-    var REQUEST_PICK_APPWIDGET_RIGHT: Int = 20001
-    var REQUEST_CREATE_APPWIDGET_LEFT: Int = 20002
-    var REQUEST_CREATE_APPWIDGET_RIGHT: Int = 20002
+    val REQUEST_PICK_APPWIDGET_LEFT: Int = 20000
+    val REQUEST_PICK_APPWIDGET_RIGHT: Int = 20001
+    val REQUEST_CREATE_APPWIDGET_LEFT: Int = 20002
+    val REQUEST_CREATE_APPWIDGET_RIGHT: Int = 20002
     var widgetData: WidgetData = WidgetData()
 
     override fun onCreateView(
@@ -51,13 +51,10 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-
     override fun onPause() {
         super.onPause()
         hideAlert()
-
     }
-
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -90,15 +87,9 @@ class HomeFragment : Fragment() {
         }
 
         mAppWidgetManager = AppWidgetManager.getInstance(context?.applicationContext)
-
         mAppWidgetHost = WidgetHost(context?.applicationContext, 1024)
-
         mAppWidgetHost.deleteHost()
-
         mAppWidgetHost.startListening()
-
-
-
 
         val sharedPreferences = Util.getSharedPreferences(context!!)
 //        var strWidget = sharedPreferences?.getString(SharedPreferencesKeys.WIDGET, "")
@@ -134,28 +125,28 @@ class HomeFragment : Fragment() {
                 AppData(
                     "Navigation",
                     "n_com.android.settings",
-                    activity!!.getDrawable(R.drawable.bg_selector_navigation)!!
+                    requireContext().getDrawable(R.drawable.bg_selector_navigation)!!
                 )
             )
             apps.add(
                 AppData(
                     "Video",
                     "n_android.rk.RockVideoPlayer",
-                    activity!!.getDrawable(R.drawable.bg_selector_video)!!
+                    requireContext().getDrawable(R.drawable.bg_selector_video)!!
                 )
             )
             apps.add(
                 AppData(
                     "Music",
                     "n_com.android.music",
-                    activity!!.getDrawable(R.drawable.bg_selector_music)!!
+                    requireContext().getDrawable(R.drawable.bg_selector_music)!!
                 )
             )
             apps.add(
                 AppData(
                     "Internet",
                     "n_acr.browser.barebones",
-                    activity!!.getDrawable(R.drawable.bg_selector_ineternet)!!
+                    requireContext().getDrawable(R.drawable.bg_selector_ineternet)!!
                 )
             )
         } else {
@@ -165,15 +156,15 @@ class HomeFragment : Fragment() {
                 try {
 //                    if(it.startsWith("n_")){
 //                        apps.add(when(index){
-//                            0->AppData("Navigation","n_com.android.settings",activity!!.getDrawable(R.drawable.bg_selector_navigation)!!)
-//                            1->AppData("Video","n_android.rk.RockVideoPlayer",activity!!.getDrawable(R.drawable.bg_selector_video)!!)
-//                            2->AppData("Music","n_com.android.music",activity!!.getDrawable(R.drawable.bg_selector_music)!!)
-//                            3->AppData("Internet","n_com.android.quicksearchbox",activity!!.getDrawable(R.drawable.bg_selector_ineternet)!!)
-//                            else->AppData("Navigation","n_com.android.settings",activity!!.getDrawable(R.drawable.bg_selector_navigation)!!)
+//                            0->AppData("Navigation","n_com.android.settings",requireContext().getDrawable(R.drawable.bg_selector_navigation)!!)
+//                            1->AppData("Video","n_android.rk.RockVideoPlayer",requireContext().getDrawable(R.drawable.bg_selector_video)!!)
+//                            2->AppData("Music","n_com.android.music",requireContext().getDrawable(R.drawable.bg_selector_music)!!)
+//                            3->AppData("Internet","n_com.android.quicksearchbox",requireContext().getDrawable(R.drawable.bg_selector_ineternet)!!)
+//                            else->AppData("Navigation","n_com.android.settings",requireContext().getDrawable(R.drawable.bg_selector_navigation)!!)
 //                        })
 //
 //                    }else{
-//                        val packageManager = activity!!.packageManager
+//                        val packageManager = requireContext().packageManager
 //                        var appInfo = packageManager.getApplicationInfo(
 //                            it,
 //                            PackageManager.GET_META_DATA
@@ -193,45 +184,32 @@ class HomeFragment : Fragment() {
                     apps.add(
                         when (index) {
                             0 -> AppData(
-                                "Navigation",
-                                it,
-                                activity!!.getDrawable(R.drawable.bg_selector_navigation)!!
+                                "Navigation", it,
+                                requireContext().getDrawable(R.drawable.bg_selector_navigation)!!
                             )
                             1 -> AppData(
-                                "Video",
-                                it,
-                                activity!!.getDrawable(R.drawable.bg_selector_video)!!
+                                "Video", it,
+                                requireContext().getDrawable(R.drawable.bg_selector_video)!!
                             )
                             2 -> AppData(
-                                "Music",
-                                it,
-                                activity!!.getDrawable(R.drawable.bg_selector_music)!!
+                                "Music", it,
+                                requireContext().getDrawable(R.drawable.bg_selector_music)!!
                             )
                             3 -> AppData(
-                                "Internet",
-                                it,
-                                activity!!.getDrawable(R.drawable.bg_selector_ineternet)!!
+                                "Internet", it,
+                                requireContext().getDrawable(R.drawable.bg_selector_ineternet)!!
                             )
                             else -> AppData(
-                                "Navigation",
-                                it,
-                                activity!!.getDrawable(R.drawable.bg_selector_navigation)!!
+                                "Navigation", it,
+                                requireContext().getDrawable(R.drawable.bg_selector_navigation)!!
                             )
                         }
                     )
                 } catch (e: Exception) {
-
                 }
             }
-
         }
-
         mappingApps()
-
-
-
-
-
 
         setAppClick()
     }
@@ -247,25 +225,14 @@ class HomeFragment : Fragment() {
                 } catch (e: Exception) {
                     loadWidget("com.nv.nvluncher", "com.nv.nvluncher.NVClock", requestCode)
                 }
-
             }
-
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-
     }
 
     override fun onStop() {
         super.onStop()
         mAppWidgetHost.stopListening()
-
-
     }
-
-
 
     fun selectWidget(requestCode: Int) {
         val appWidgetId: Int = this.mAppWidgetHost.allocateAppWidgetId()
@@ -291,7 +258,6 @@ class HomeFragment : Fragment() {
                 createWidget(data, REQUEST_PICK_APPWIDGET_LEFT)
             } else if (requestCode == REQUEST_CREATE_APPWIDGET_RIGHT) {
                 createWidget(data, REQUEST_PICK_APPWIDGET_RIGHT)
-
             }
 
         } else if (resultCode == RESULT_CANCELED && data != null) {
@@ -325,17 +291,13 @@ class HomeFragment : Fragment() {
                 intent.component = appWidgetInfo.configure
                 intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
                 if (requestCode == REQUEST_PICK_APPWIDGET_LEFT) {
-
                     startActivityForResult(intent, REQUEST_CREATE_APPWIDGET_LEFT)
                 } else if (requestCode == REQUEST_PICK_APPWIDGET_RIGHT) {
-
                     startActivityForResult(intent, REQUEST_CREATE_APPWIDGET_RIGHT)
                 }
             } catch (e: Exception) {
-
                 loadWidget("com.nv.nvluncher", "com.nv.nvluncher.NVClock", requestCode)
             }
-
 
         } else {
             createWidget(data, requestCode)
@@ -343,8 +305,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadWidget(appWidgetInfo: AppWidgetProviderInfo, requestCode: Int) {
-
-
         if (appWidgetInfo?.configure != null) {
             val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_CONFIGURE)
             intent.component = appWidgetInfo.configure
@@ -360,8 +320,6 @@ class HomeFragment : Fragment() {
         } else {
             createWidget(appWidgetInfo, requestCode)
         }
-
-
     }
 
     fun createWidget(data: Intent?, requestCode: Int) {
@@ -374,7 +332,6 @@ class HomeFragment : Fragment() {
 
 
     fun createWidget(appWidgetInfo: AppWidgetProviderInfo, requestCode: Int) {
-
         var appWidgetId = mAppWidgetHost.allocateAppWidgetId()
 
         val allowed = mAppWidgetManager!!.bindAppWidgetIdIfAllowed(
@@ -397,16 +354,13 @@ class HomeFragment : Fragment() {
     }
 
 
-
     private fun makeHostView(
         appWidgetId: Int,
         appWidgetInfo: AppWidgetProviderInfo,
         requestCode: Int
     ) {
 
-
-
-        val hostView : WidgetView = mAppWidgetHost.createView(
+        val hostView: WidgetView = mAppWidgetHost.createView(
             context?.applicationContext,
             appWidgetId,
             appWidgetInfo
@@ -423,12 +377,10 @@ class HomeFragment : Fragment() {
         )
         if (requestCode == REQUEST_PICK_APPWIDGET_LEFT) {
 //            hostView.updateAppWidgetSize(null,0,0,home_ly_widget_left.width,home_ly_widget_left.height)
-
             home_ly_widget_left.removeAllViews()
             home_ly_widget_left.addView(hostView)
         } else if (requestCode == REQUEST_PICK_APPWIDGET_RIGHT) {
 //            hostView.updateAppWidgetSize(null,0,0,home_ly_widget_right.width,home_ly_widget_right.height)
-
             home_ly_widget_right.removeAllViews()
             home_ly_widget_right.addView(hostView)
         }
@@ -462,15 +414,15 @@ class HomeFragment : Fragment() {
             try {
 //                if(it.startsWith("n_")){
 //                    apps.add(when(index){
-//                        0->AppData("Navigation","n_com.android.settings",activity!!.getDrawable(R.drawable.bg_selector_navigation)!!)
-//                        1->AppData("Video","n_android.rk.RockVideoPlayer",activity!!.getDrawable(R.drawable.bg_selector_video)!!)
-//                        2->AppData("Music","n_com.android.music",activity!!.getDrawable(R.drawable.bg_selector_music)!!)
-//                        3->AppData("Internet","n_com.android.quicksearchbox",activity!!.getDrawable(R.drawable.bg_selector_ineternet)!!)
-//                        else->AppData("Navigation","n_com.android.settings",activity!!.getDrawable(R.drawable.bg_selector_navigation)!!)
+//                        0->AppData("Navigation","n_com.android.settings",requireContext().getDrawable(R.drawable.bg_selector_navigation)!!)
+//                        1->AppData("Video","n_android.rk.RockVideoPlayer",requireContext().getDrawable(R.drawable.bg_selector_video)!!)
+//                        2->AppData("Music","n_com.android.music",requireContext().getDrawable(R.drawable.bg_selector_music)!!)
+//                        3->AppData("Internet","n_com.android.quicksearchbox",requireContext().getDrawable(R.drawable.bg_selector_ineternet)!!)
+//                        else->AppData("Navigation","n_com.android.settings",requireContext().getDrawable(R.drawable.bg_selector_navigation)!!)
 //                    })
 //
 //                }else{
-//                    val packageManager = activity!!.packageManager
+//                    val packageManager = requireContext().packageManager
 //                    var appInfo = packageManager.getApplicationInfo(
 //                        it,
 //                        PackageManager.GET_META_DATA
@@ -492,27 +444,27 @@ class HomeFragment : Fragment() {
                         0 -> AppData(
                             "Navigation",
                             it,
-                            activity!!.getDrawable(R.drawable.bg_selector_navigation)!!
+                            requireContext().getDrawable(R.drawable.bg_selector_navigation)!!
                         )
                         1 -> AppData(
                             "Video",
                             it,
-                            activity!!.getDrawable(R.drawable.bg_selector_video)!!
+                            requireContext().getDrawable(R.drawable.bg_selector_video)!!
                         )
                         2 -> AppData(
                             "Music",
                             it,
-                            activity!!.getDrawable(R.drawable.bg_selector_music)!!
+                            requireContext().getDrawable(R.drawable.bg_selector_music)!!
                         )
                         3 -> AppData(
                             "Internet",
                             it,
-                            activity!!.getDrawable(R.drawable.bg_selector_ineternet)!!
+                            requireContext().getDrawable(R.drawable.bg_selector_ineternet)!!
                         )
                         else -> AppData(
                             "Navigation",
                             it,
-                            activity!!.getDrawable(R.drawable.bg_selector_navigation)!!
+                            requireContext().getDrawable(R.drawable.bg_selector_navigation)!!
                         )
                     }
                 )
@@ -554,7 +506,7 @@ class HomeFragment : Fragment() {
                 choice = index
                 var view = AppHorizontalView(context!!)
                 view.onItemClickListener = this::onAppClick
-                view.load(activity!!.packageManager)
+                view.load(requireContext().packageManager)
                 alert = AlertDialog.Builder(context)
                     .setTitle(R.string.choose_the_app)
                     .setView(view)
@@ -572,17 +524,11 @@ class HomeFragment : Fragment() {
     fun hideAlert() {
         try {
             alert.dismiss()
-
         } catch (e: Exception) {
-
         }
         try {
             alertImages.dismiss()
-
         } catch (e: Exception) {
-
         }
-
     }
-
 }

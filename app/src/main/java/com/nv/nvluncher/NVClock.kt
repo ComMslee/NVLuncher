@@ -40,7 +40,7 @@ class NVClock : AppWidgetProvider() {
             val firstTime =
                 System.currentTimeMillis() + WIDGET_UPDATE_INTERVAL
             mSender = PendingIntent.getBroadcast(context, 0, intent, 0)
-            mManager =context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            mManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             mManager!![AlarmManager.RTC, firstTime] = mSender
         } else if (action == "android.appwidget.action.APPWIDGET_DISABLED") {
             removePreviousAlarm()

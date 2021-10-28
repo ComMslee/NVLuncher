@@ -25,7 +25,10 @@
 
     <dimen name="item_w">65dp</dimen>
     <dimen name="item_h">65dp</dimen>
-    <dimen name="item_text_size">16sp</dimen>
+    <dimen name="item_text_w">100dp</dimen>
+    <dimen name="item_text_h">40dp</dimen>
+    <dimen name="item_text_size_min">12sp</dimen>
+    <dimen name="item_text_size_max">16sp</dimen>
     <dimen name="item_margin_bottom">10dp</dimen>
 
     <dimen name="fmt_w">118dp</dimen>

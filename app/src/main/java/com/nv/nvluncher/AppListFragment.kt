@@ -20,40 +20,38 @@ class AppListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 //        var timerTask =object : TimerTask(){
 //            override fun run() {
-//                app_list.load(activity!!.packageManager)
+//                app_list.load(requireContext().packageManager)
 //            }
 //
 //        }
 //        Timer().schedule(timerTask,100000)
-        app_list.load(activity!!.packageManager)
+        app_list.load(requireContext().packageManager)
     }
 
-    fun reload(){
-        app_list.reload(activity!!.packageManager)
+    fun reload() {
+        app_list.reload(requireContext().packageManager)
     }
-    var isFirst :Boolean = true;
 
+    var isFirst: Boolean = true;
 
     override fun onResume() {
         super.onResume()
 
-        if(isFirst){
-            isFirst=false;
-            if(app_list.adapter?.isEmpty() == true){
-                app_list.reload(activity!!.packageManager)
+        if (isFirst) {
+            isFirst = false;
+            if (app_list.adapter?.isEmpty() == true) {
+                app_list.reload(requireContext().packageManager)
             }
-        }else{
-            app_list.reload(activity!!.packageManager)
+        } else {
+            app_list.reload(requireContext().packageManager)
         }
-//        app_list.load(activity!!.packageManager)
+//        app_list.load(requireContext().packageManager)
 //        var timerTask =object : TimerTask(){
 //            override fun run() {
-//                app_list.load(activity!!.packageManager)
+//                app_list.load(requireContext().packageManager)
 //            }
 //
 //        }
 //        Timer().schedule(timerTask,500)
-
     }
-
 }

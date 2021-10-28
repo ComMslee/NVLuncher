@@ -19,12 +19,12 @@
 <!--        app:layout_constraintRight_toRightOf="parent" />-->
 
     <com.nv.customview.applist.AppListView
+        android:paddingTop="10dp"
         android:id="@+id/app_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/layout_applist_padding_l"
         android:paddingRight="@dimen/layout_applist_padding_r"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

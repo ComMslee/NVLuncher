@@ -3,13 +3,9 @@ package com.nv.customview.applist
 import android.content.Context
 import android.content.pm.PackageManager
 import android.util.AttributeSet
-import android.util.Log
-import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nv.lutil.listener.OnItemClickListener
-import gg.op.agro.decoration.SpacesGridItemDecoration
 import gg.op.agro.decoration.SpacesHorizontalItemDecoration
 import gg.op.agro.util.Util
 import kotlinx.coroutines.GlobalScope
@@ -19,9 +15,9 @@ import kotlin.reflect.KFunction2
 
 
 class AppHorizontalView : RecyclerView {
-    var onItemClickListener : KFunction2<Int, AppData?, Unit>? = null
-    var onEmptyListener : KFunction0<Unit>? = null
-    lateinit var packageManager : PackageManager
+    var onItemClickListener: KFunction2<Int, AppData?, Unit>? = null
+    var onEmptyListener: KFunction0<Unit>? = null
+    lateinit var packageManager: PackageManager
 
     constructor(context: Context) : super(context) {
         init()
@@ -41,32 +37,34 @@ class AppHorizontalView : RecyclerView {
 
 
     fun init() {
-        var adapter = AppListAdapter()
-        adapter.onItemClickListener = OnItemClickListener { position, model ->
-
-            onItemClickListener?.let { it(position,model) }
+        var appListAdapter = AppListAdapter(1)
+        appListAdapter.onItemClickListener = OnItemClickListener { position, model ->
+            onItemClickListener?.let { it(position, model) }
         }
 
+        adapter = appListAdapter
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
 
-        this.adapter = adapter
-
-        layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
-
-        addItemDecoration(SpacesHorizontalItemDecoration(Util.convertDpToPixel(8f,context),Util.convertDpToPixel(16f,context)))
-
-
+        addItemDecoration(
+            SpacesHorizontalItemDecoration(
+                Util.convertDpToPixel(8f, context),
+                Util.convertDpToPixel(16f, context)
+            )
+        )
     }
 
-    public fun load(packageManager: PackageManager){
+    public fun load(packageManager: PackageManager) {
         this.packageManager = packageManager
 
         GlobalScope.launch {
             adapter?.clear()
             var models = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
-            for(i in 0 until models.size){
+            for (i in 0 until models.size) {
 //        for(i in 0..30){
-            var model = models[i]
-                if(context.getPackageManager().getLaunchIntentForPackage(model.packageName) != null) {
+                var model = models[i]
+                if (context.getPackageManager()
+                        .getLaunchIntentForPackage(model.packageName) != null
+                ) {
                     adapter?.add(
                         AppData(
                             model.loadLabel(packageManager),
@@ -75,7 +73,7 @@ class AppHorizontalView : RecyclerView {
                         )
                     )
                 }
-                if(i%10 == 0){
+                if (i % 10 == 0) {
                     post {
                         adapter?.notifyDataSetChanged()
                     }

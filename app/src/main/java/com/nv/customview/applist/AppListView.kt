@@ -11,7 +11,6 @@ import com.nv.lutil.listener.OnItemClickListener
 import com.nv.nvluncher.MainActivity
 import gg.op.agro.decoration.SpacesGridItemDecoration
 import gg.op.agro.util.Util
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlin.reflect.KFunction0
 import kotlin.reflect.KFunction2
