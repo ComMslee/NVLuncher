@@ -10,13 +10,10 @@ import gg.op.agro.decoration.SpacesHorizontalItemDecoration
 import gg.op.agro.util.Util
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlin.reflect.KFunction0
 import kotlin.reflect.KFunction2
-
 
 class AppHorizontalView : RecyclerView {
     var onItemClickListener: KFunction2<Int, AppData?, Unit>? = null
-    var onEmptyListener: KFunction0<Unit>? = null
     lateinit var packageManager: PackageManager
 
     constructor(context: Context) : super(context) {
@@ -37,7 +34,7 @@ class AppHorizontalView : RecyclerView {
 
 
     fun init() {
-        var appListAdapter = AppListAdapter(1)
+        val appListAdapter = AppListAdapter(1)
         appListAdapter.onItemClickListener = OnItemClickListener { position, model ->
             onItemClickListener?.let { it(position, model) }
         }
@@ -53,7 +50,7 @@ class AppHorizontalView : RecyclerView {
         )
     }
 
-    public fun load(packageManager: PackageManager) {
+    fun load(packageManager: PackageManager) {
         this.packageManager = packageManager
 
         GlobalScope.launch {
@@ -62,9 +59,7 @@ class AppHorizontalView : RecyclerView {
             for (i in 0 until models.size) {
 //        for(i in 0..30){
                 var model = models[i]
-                if (context.getPackageManager()
-                        .getLaunchIntentForPackage(model.packageName) != null
-                ) {
+                if (context.packageManager.getLaunchIntentForPackage(model.packageName) != null) {
                     adapter?.add(
                         AppData(
                             model.loadLabel(packageManager),
@@ -81,13 +76,9 @@ class AppHorizontalView : RecyclerView {
             }
             post {
                 adapter?.notifyDataSetChanged()
-
             }
-
         }
-
     }
-
 
     override fun getAdapter(): AppListAdapter? {
         return super.getAdapter() as AppListAdapter
