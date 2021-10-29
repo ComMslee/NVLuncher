@@ -8,31 +8,19 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_app_list.*
 
 class AppListFragment : Fragment() {
+    var isFirst: Boolean = true
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_app_list, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-//        var timerTask =object : TimerTask(){
-//            override fun run() {
-//                app_list.load(requireContext().packageManager)
-//            }
-//
-//        }
-//        Timer().schedule(timerTask,100000)
-        app_list.load(requireContext().packageManager)
+        reload()
     }
-
-    fun reload() {
-        app_list.reload(requireContext().packageManager)
-    }
-
-    var isFirst: Boolean = true
 
     override fun onResume() {
         super.onResume()
@@ -40,18 +28,14 @@ class AppListFragment : Fragment() {
         if (isFirst) {
             isFirst = false
             if (app_list.adapter?.isEmpty() == true) {
-                app_list.reload(requireContext().packageManager)
+                reload()
             }
         } else {
-            app_list.reload(requireContext().packageManager)
+            reload()
         }
-//        app_list.load(requireContext().packageManager)
-//        var timerTask =object : TimerTask(){
-//            override fun run() {
-//                app_list.load(requireContext().packageManager)
-//            }
-//
-//        }
-//        Timer().schedule(timerTask,500)
+    }
+
+    fun reload() {
+        app_list.load(requireContext().packageManager)
     }
 }

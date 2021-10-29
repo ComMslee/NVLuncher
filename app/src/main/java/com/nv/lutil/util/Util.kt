@@ -2,11 +2,14 @@ package gg.op.agro.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.database.Cursor
 import android.net.Uri
 import android.provider.MediaStore
 import android.util.DisplayMetrics
+import android.util.Log
 import android.util.Patterns
+import com.nv.customview.applist.AppData
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -210,5 +213,27 @@ object Util {
     fun getEditor(context: Context): SharedPreferences.Editor? {
         val pref = getSharedPreferences(context)
         return pref?.edit()
+    }
+
+    fun appList(packageManager: PackageManager): ArrayList<AppData> {
+        val apps: ArrayList<AppData> = ArrayList()
+
+        val models = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
+        for (i in 0 until models.size) {
+            var model = models[i]
+            if (packageManager.getLaunchIntentForPackage(model.packageName) != null) {
+                Log.e("mslee", "packageName ${model.packageName}"); //mslee add log
+                if(model.packageName == "com.nv.nvluncher") continue
+                apps.add(
+                    AppData(
+                        model.loadLabel(packageManager),
+                        model.packageName,
+                        model.loadIcon(packageManager)
+                    )
+                )
+            }
+        }
+
+        return apps;
     }
 }

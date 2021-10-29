@@ -69,26 +69,12 @@ class AppListView : RecyclerView {
             if (isLoading) return
             isLoading = true
             var preAppData: ArrayList<AppData> = ArrayList()
-            if (MainActivity.preAppData != null) {
-                preAppData = MainActivity.preAppData ?: ArrayList()
+            MainActivity.preAppData?.let {
+                preAppData.addAll(it)
                 MainActivity.preAppData = null
-            } else {
-                var models = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
-                for (i in 0 until models.size) {
-                    var model = models[i]
-                    if (context.packageManager
-                            .getLaunchIntentForPackage(model.packageName) != null
-                    ) {
-                        preAppData.add(
-                            AppData(
-                                model.loadLabel(packageManager),
-                                model.packageName,
-                                model.loadIcon(packageManager)
-                            )
-                        )
-                    }
-
-                }
+            } ?: run {
+                val applist = Util.appList(packageManager)
+                preAppData.addAll(applist)
             }
 
             adapter?.apply {
@@ -101,37 +87,22 @@ class AppListView : RecyclerView {
         }
     }
 
-    fun reload(packageManager: PackageManager) {
-        this.packageManager = packageManager
-
-        synchronized(isLoading) {
-            if (isLoading) return
-            isLoading = true
-            var preAppData: ArrayList<AppData> = ArrayList()
-            var models = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
-            for (i in 0 until models.size) {
-                var model = models[i]
-                if (context.packageManager
-                        .getLaunchIntentForPackage(model.packageName) != null
-                ) {
-                    preAppData.add(
-                        AppData(
-                            model.loadLabel(packageManager),
-                            model.packageName,
-                            model.loadIcon(packageManager)
-                        )
-                    )
-                }
-            }
-            adapter?.apply {
-                clear()
-                add(preAppData)
-                notifyDataSetChanged()
-            }
-
-            isLoading = false
-        }
-    }
+//    fun reload(packageManager: PackageManager) {
+//        this.packageManager = packageManager
+//
+//        synchronized(isLoading) {
+//            if (isLoading) return
+//            isLoading = true
+//            val applist = Util.appList(packageManager)
+//            adapter?.apply {
+//                clear()
+//                add(applist)
+//                notifyDataSetChanged()
+//            }
+//
+//            isLoading = false
+//        }
+//    }
 
     override fun getAdapter(): AppListAdapter? {
         return super.getAdapter() as AppListAdapter

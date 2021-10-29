@@ -116,19 +116,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun load() {
-        var models = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
-        for (i in 0 until models.size) {
-            var model = models[i]
-            if (packageManager.getLaunchIntentForPackage(model.packageName) != null) {
-                preAppData?.add(
-                    AppData(
-                        model.loadLabel(packageManager),
-                        model.packageName,
-                        model.loadIcon(packageManager)
-                    )
-                )
-            }
-        }
+        val applist = Util.appList(packageManager)
+        preAppData?.addAll(applist)
     }
 
     override fun onResume() {

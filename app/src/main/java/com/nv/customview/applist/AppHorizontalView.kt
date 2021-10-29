@@ -53,28 +53,21 @@ class AppHorizontalView : RecyclerView {
         this.packageManager = packageManager
 
         GlobalScope.launch {
-            adapter?.clear()
-            var models = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
-            for (i in 0 until models.size) {
-//        for(i in 0..30){
-                var model = models[i]
-                if (context.packageManager.getLaunchIntentForPackage(model.packageName) != null) {
-                    adapter?.add(
-                        AppData(
-                            model.loadLabel(packageManager),
-                            model.packageName,
-                            model.loadIcon(packageManager)
-                        )
-                    )
-                }
-                if (i % 10 == 0) {
-                    post {
-                        adapter?.notifyDataSetChanged()
+            adapter?.let {
+                it.clear()
+
+                val applist = Util.appList(packageManager)
+                applist.forEachIndexed { index, appData ->
+                    it.add(appData)
+                    if (index % 10 == 0) {
+                        post {
+                            it.notifyDataSetChanged()
+                        }
                     }
                 }
-            }
-            post {
-                adapter?.notifyDataSetChanged()
+                post {
+                    it.notifyDataSetChanged()
+                }
             }
         }
     }

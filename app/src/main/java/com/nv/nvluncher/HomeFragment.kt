@@ -471,9 +471,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun mappingApps() {
-        var thumb = arrayOf(home_iv_one, home_iv_two, home_iv_three, home_iv_four)
+        val thumb = arrayOf(home_iv_one, home_iv_two, home_iv_three, home_iv_four)
         apps.forEachIndexed { index, appData ->
-            thumb.get(index).setImageDrawable(appData.thumb)
+            thumb[index].setImageDrawable(appData.thumb)
         }
     }
 
@@ -482,32 +482,26 @@ class HomeFragment : Fragment() {
             arrayOf(hoem_ly_app_one, hoem_ly_app_two, hoem_ly_app_three, hoem_ly_app_four)
         appViews.forEachIndexed { index, linearLayout ->
             linearLayout.setOnClickListener {
-                if (context != null) {
-
-                    var packageName = apps[index].packageName
-                    if (packageName.startsWith("n_")) {
-                        packageName = packageName.replace("n_", "")
-                    }
-                    val launchIntent = context!!.packageManager
-                        .getLaunchIntentForPackage(packageName)
-                    if (launchIntent != null) {
-                        context!!.startActivity(launchIntent)
-                    }
+                var packageName = apps[index].packageName.replace(Regex("^n_"), "")
+                val launchIntent =
+                    requireContext().packageManager.getLaunchIntentForPackage(packageName)
+                if (launchIntent != null) {
+                    requireContext().startActivity(launchIntent)
                 }
             }
+
             linearLayout.setOnLongClickListener {
                 choice = index
-                var view = AppHorizontalView(context!!)
-                view.onItemClickListener = this::onAppClick
-                view.load(requireContext().packageManager)
-                alert = AlertDialog.Builder(context)
-                    .setTitle(R.string.choose_the_app)
-                    .setView(view)
-                    .setNegativeButton(R.string.cancle) { dialogInterface: DialogInterface, i: Int ->
-
-                    }
-                    .create()
-                alert.show()
+                AppHorizontalView(requireContext()).let { view ->
+                    view.onItemClickListener = this::onAppClick
+                    view.load(requireContext().packageManager)
+                    alert = AlertDialog.Builder(requireContext())
+                        .setTitle(R.string.choose_the_app)
+                        .setView(view)
+                        .setNegativeButton(R.string.cancle) { dialogInterface: DialogInterface, i: Int -> }
+                        .create()
+                    alert.show()
+                }
                 true
             }
 
