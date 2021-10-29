@@ -11,18 +11,20 @@ class PagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
     var appListFragment: AppListFragment? = null
 
     override fun getItemCount(): Int {
-        return 2;
+        return 2
     }
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> {
-                homeFragment = HomeFragment()
-                homeFragment!!
+                HomeFragment().apply {
+                    homeFragment = this
+                }
             }
             else -> {
-                appListFragment = AppListFragment()
-                appListFragment!!
+                AppListFragment().apply {
+                    appListFragment = this
+                }
             }
         }
     }

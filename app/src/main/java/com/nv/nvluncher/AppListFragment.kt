@@ -32,13 +32,13 @@ class AppListFragment : Fragment() {
         app_list.reload(requireContext().packageManager)
     }
 
-    var isFirst: Boolean = true;
+    var isFirst: Boolean = true
 
     override fun onResume() {
         super.onResume()
 
         if (isFirst) {
-            isFirst = false;
+            isFirst = false
             if (app_list.adapter?.isEmpty() == true) {
                 app_list.reload(requireContext().packageManager)
             }

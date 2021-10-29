@@ -11,7 +11,7 @@ object PermissionUtil {
         "android.permission.READ_EXTERNAL_STORAGE"
     )
 
-    fun hasPermissions(context : Context): Boolean {
+    fun hasPermissions(context: Context): Boolean {
         var result: Int
 
         //스트링 배열에 있는 퍼미션들의 허가 상태 여부 확인

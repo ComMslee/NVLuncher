@@ -1,6 +1,5 @@
 package com.nv.nvluncher
 
-import android.R.attr
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -10,14 +9,12 @@ import android.content.pm.PackageManager
 import android.database.ContentObserver
 import android.os.Bundle
 import android.os.Handler
-import android.os.PersistableBundle
 import android.provider.Settings
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
 import com.nv.adapter.PagerAdapter
 import com.nv.customview.applist.AppData
 import gg.op.agro.util.SharedPreferencesKeys
@@ -26,13 +23,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_bottom_bar.view.*
 import java.util.*
 import kotlin.collections.ArrayList
-import android.R.attr.name
-import java.lang.Exception
-import java.lang.String
-import java.lang.Thread.sleep
-
 
 class MainActivity : AppCompatActivity() {
+    private val TAG = "MainActivity"
     private val ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE: Int = 2000
 
     companion object {
@@ -40,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         var preAppData: ArrayList<AppData>? = ArrayList()
     }
 
-    private var receiver: ButtonReceiver? = null
     private var contentObserver: ContentObserver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,17 +43,8 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         load()
+
         setContentView(R.layout.activity_main)
-
-        receiver = ButtonReceiver()
-        receiver?.vp = viewPager
-
-//        bottom_bar_image_view_app_list.setOnClickListener {
-//            startActivity(Intent(this, AppListActivity::class.java))
-//        }
-//        main_linear_layout_music.setOnClickListener {
-//            startActivity(Intent(this, RadioActivity::class.java))
-//        }
 
         viewPager.offscreenPageLimit = 5
         viewPager.adapter = PagerAdapter(this)
@@ -69,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         var sel = Util.getSharedPreferences(this)!!.getInt(SharedPreferencesKeys.BAR, 0)
 
-        viewPager.currentItem = MainActivity.position
+        viewPager.currentItem = position
 
 //        window.decorView.apply {
 //            // Hide both the navigation bar and the status bar.
@@ -78,8 +61,6 @@ class MainActivity : AppCompatActivity() {
 //            // hide the navigation bar.
 //            systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 //        }
-
-
 //        val uri: Uri = Uri.fromParts("package", packageName, null)
 //        val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, uri)
 //        startActivityForResult(intent, ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE)
@@ -96,25 +77,29 @@ class MainActivity : AppCompatActivity() {
         contentObserver = object : ContentObserver(Handler(mainLooper)) {
             override fun onChange(selfChange: Boolean) {
                 Log.e("LB_NavBar", "onchange LB_NAVBAR_POSITION")
-//                val adapter = viewPager?.adapter
-//                if (adapter is PagerAdapter) {
-//                    adapter.homeFragment?.hideAlert()
-//                }
-//                MainActivity.position=viewPager.currentItem
-//                contentObserver?.let { contentResolver.unregisterContentObserver(it) }
-//                var intent = intent
-//                finishAffinity()
-//                finish()
-//                startActivity(intent)
-
-
             }
         }
+
         contentObserver?.let {
             contentResolver.registerContentObserver(
                 Settings.Global.getUriFor("lb_navabar_position"), false,
                 it
             )
+        }
+
+        IntentFilter().apply {
+            addAction(ACTION_HOME)
+            addAction(ACTION_APP)
+            addAction(ACTION_BAR)
+            registerReceiver(bottomReceiver, this)
+        }
+
+        IntentFilter().apply {
+            addAction(Intent.ACTION_PACKAGE_ADDED)
+            addAction(Intent.ACTION_PACKAGE_REPLACED)
+            addAction(Intent.ACTION_PACKAGE_REMOVED)
+            addDataScheme("package")
+            registerReceiver(appReceiver, this)
         }
     }
 
@@ -122,12 +107,12 @@ class MainActivity : AppCompatActivity() {
         super.onNewIntent(intent)
         var mode = intent?.getIntExtra("mode", -1)
 
-        if (mode == 1) {    // ALL APPS
-            viewPager?.setCurrentItem(1, true)
-        } else {             // HOME
-            viewPager?.setCurrentItem(0, true)
-
+        val pageNo = if (mode == 1) { // ALL APPS
+            1
+        } else { // HOME
+            0
         }
+        viewPager?.setCurrentItem(pageNo, true)
     }
 
     fun load() {
@@ -148,22 +133,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        IntentFilter().apply {
-            addAction(ButtonReceiver.ACTION_HOME)
-            addAction(ButtonReceiver.ACTION_APP)
-            addAction(ButtonReceiver.ACTION_BAR)
-            addAction(Intent.ACTION_PACKAGE_ADDED)
-            addAction(Intent.ACTION_PACKAGE_REPLACED)
-            addAction(Intent.ACTION_PACKAGE_REMOVED)
-            addDataScheme("package")
-            registerReceiver(receiver, this)
-        }
+        Log.e(TAG, "onResume") //mslee add log
     }
 
     override fun onPause() {
         super.onPause()
-        unregisterReceiver(receiver)
-//        contentObserver?.let { contentResolver.unregisterContentObserver(it) }
+        Log.e(TAG, "onPause") //mslee add log
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(bottomReceiver)
+        unregisterReceiver(appReceiver)
     }
 
     private fun setWindowFlag(bits: Int, on: Boolean) {
@@ -182,8 +163,7 @@ class MainActivity : AppCompatActivity() {
 //            getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
 //        var view = BottomBarView(applicationContext)
 //        view.pager = viewPager
-
-
+//
 //        var manager =
 //            applicationContext.getSystemService(WINDOW_SERVICE) as WindowManager
 //
@@ -204,11 +184,8 @@ class MainActivity : AppCompatActivity() {
 //
 //        //make sure height includes the nav bar size (get the dimension of whole screen)
 //
-//        //make sure height includes the nav bar size (get the dimension of whole screen)
-//
 //        windowManager.addView(view, params)
-
-
+//
 //        view.bottom_bar_hide.setOnClickListener {
 //            view.bottom_bar_ly_bar.visibility = View.VISIBLE
 //            view.bottom_bar_hide.visibility = View.GONE
@@ -239,9 +216,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-    override fun onBackPressed() {
-    }
+    override fun onBackPressed() {}
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean =
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -250,41 +225,41 @@ class MainActivity : AppCompatActivity() {
             super.onKeyDown(keyCode, event)
         }
 
-    class ButtonReceiver : BroadcastReceiver() {
-        companion object {
-            const val ACTION_HOME = "com.nv.nvluncher.ACTION_HOME"
-            const val ACTION_APP = "com.nv.nvluncher.ACTION_APP"
-            const val ACTION_BAR = "android.intent.action.lb.navbaropt"
-        }
+    val ACTION_HOME = "com.nv.nvluncher.ACTION_HOME"
+    val ACTION_APP = "com.nv.nvluncher.ACTION_APP"
+    val ACTION_BAR = "android.intent.action.lb.navbaropt"
 
-        var vp: ViewPager2? = null
+    val appReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
-            // an Intent broadcast.
-            //각 방송 정보는 intent로 전달됨
-            Log.e("ddd", "dddd")
             when (intent.action) {
-                ACTION_HOME -> {
-                    vp?.setCurrentItem(0, true)
-                }
-
-                ACTION_APP -> {
-                    vp?.setCurrentItem(1, true)
-                }
-
-                ACTION_BAR -> {
-                    val adapter = vp?.adapter
-                    if (adapter is PagerAdapter) {
-                        adapter.homeFragment?.hideAlert()
-                    }
-                }
-
                 ACTION_PACKAGE_REMOVED,
                 ACTION_PACKAGE_REPLACED,
                 ACTION_PACKAGE_ADDED -> {
-                    vp?.setCurrentItem(1, true)
-                    val adapter = vp?.adapter
+                    viewPager.setCurrentItem(1, true)
+                    val adapter = viewPager.adapter
                     if (adapter is PagerAdapter) {
                         adapter.appListFragment?.reload()
+                    }
+                }
+            }
+        }
+    }
+
+    val bottomReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent) {
+            when (intent.action) {
+                ACTION_HOME -> {
+                    viewPager.setCurrentItem(0, true)
+                }
+
+                ACTION_APP -> {
+                    viewPager.setCurrentItem(1, true)
+                }
+
+                ACTION_BAR -> {
+                    val adapter = viewPager.adapter
+                    if (adapter is PagerAdapter) {
+                        adapter.homeFragment?.hideAlert()
                     }
                 }
             }

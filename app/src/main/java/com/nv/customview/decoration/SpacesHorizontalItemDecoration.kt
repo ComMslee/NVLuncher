@@ -1,12 +1,12 @@
 package gg.op.agro.decoration
 
 import android.graphics.Rect
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 
-class SpacesHorizontalItemDecoration(private val space: Int, private val edgeSpace : Int) : ItemDecoration() {
+class SpacesHorizontalItemDecoration(private val space: Int, private val edgeSpace: Int) :
+    ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect, view: View,
         parent: RecyclerView, state: RecyclerView.State
@@ -14,9 +14,9 @@ class SpacesHorizontalItemDecoration(private val space: Int, private val edgeSpa
 
         val position = parent.getChildLayoutPosition(view)
         val count = parent.adapter?.itemCount
-        if(position==0){
+        if (position == 0) {
             outRect.left = edgeSpace
-        }else{
+        } else {
             outRect.left = space
         }
 

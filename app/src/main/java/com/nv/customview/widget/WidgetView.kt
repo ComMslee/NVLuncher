@@ -6,7 +6,7 @@ import android.view.*
 
 
 class WidgetView : AppWidgetHostView{
-    public var longClick: OnLongClickListener? = null
+    var longClick: OnLongClickListener? = null
     private var mHasPerformedLongPress = false
     private var mPendingCheckForLongPress: CheckForLongPress? = null
 
@@ -20,17 +20,16 @@ class WidgetView : AppWidgetHostView{
         }
 
         fun rememberWindowAttachCount() {
-            mOriginalWindowAttachCount = getWindowAttachCount()
+            mOriginalWindowAttachCount = windowAttachCount
         }
     }
 
-    constructor(context: Context?) : super(context) {}
+    constructor(context: Context?) : super(context)
     constructor(context: Context?, animationIn: Int, animationOut: Int) : super(
         context,
         animationIn,
         animationOut
-    ) {
-    }
+    )
 
 
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {

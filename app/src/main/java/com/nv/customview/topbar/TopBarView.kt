@@ -1,17 +1,13 @@
 package com.nv.customview.topbar
 
-
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.nv.nvluncher.R
-
 import kotlinx.android.synthetic.main.view_top_bar.view.*
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class TopBarView : ConstraintLayout {
 
@@ -32,7 +28,7 @@ class TopBarView : ConstraintLayout {
     }
 
 
-    fun init(){
+    fun init() {
         val view: View = View.inflate(context, R.layout.view_top_bar, this)
 
         top_bar_store.setOnClickListener {
@@ -57,22 +53,16 @@ class TopBarView : ConstraintLayout {
 
         var timerTask = object : TimerTask() {
             override fun run() {
-                val c: Date = Calendar.getInstance().getTime()
+                val c: Date = Calendar.getInstance().time
 
                 val df = SimpleDateFormat("dd-MMMM-yyyy", Locale.getDefault())
                 val formattedDate: String = df.format(c)
 
-                top_bar_date.post{
+                top_bar_date.post {
                     top_bar_date.text = formattedDate
                 }
             }
-
         }
-
-        Timer().schedule(timerTask,1000,1000)
-
-
+        Timer().schedule(timerTask, 1000, 1000)
     }
-
-
 }

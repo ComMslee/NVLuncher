@@ -1,37 +1,37 @@
 package gg.op.agro.p
 
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.nv.lutil.listener.OnEmptyListener
 import com.nv.lutil.listener.OnItemClickListener
-import org.jetbrains.annotations.NonNls
 
-abstract class PListAdapter<ViewHolder : RecyclerView.ViewHolder?,Model>() : RecyclerView.Adapter<ViewHolder>() {
+abstract class PListAdapter<ViewHolder : RecyclerView.ViewHolder?, Model> :
+    RecyclerView.Adapter<ViewHolder>() {
     protected var arrayList: ArrayList<Model> = ArrayList()
-    var onItemClickListener : OnItemClickListener<Model>? = null
-    var onEmptyListener : OnEmptyListener? = null
+    var onItemClickListener: OnItemClickListener<Model>? = null
+    var onEmptyListener: OnEmptyListener? = null
 
     fun add(t: Model) {
         arrayList.add(t)
         chkEmpty()
     }
+
     fun add(t: java.util.ArrayList<Model>) {
         arrayList.addAll(t)
         chkEmpty()
     }
 
-    fun remove(position: Int){
+    fun remove(position: Int) {
         arrayList.removeAt(position)
         chkEmpty()
     }
 
-    fun remove(t:Model){
+    fun remove(t: Model) {
         arrayList.remove(t)
         chkEmpty()
     }
 
 
-    fun isEmpty() : Boolean{
+    fun isEmpty(): Boolean {
         return arrayList.isEmpty()
     }
 
@@ -39,15 +39,16 @@ abstract class PListAdapter<ViewHolder : RecyclerView.ViewHolder?,Model>() : Rec
         arrayList.clear()
         chkEmpty()
     }
-    fun new(){
-        arrayList=ArrayList()
+
+    fun new() {
+        arrayList = ArrayList()
     }
 
-    fun get(position : Int) : Model{
+    fun get(position: Int): Model {
         return arrayList.get(position)
     }
 
-    fun getAll() : ArrayList<Model>{
+    fun getAll(): ArrayList<Model> {
         return arrayList
     }
 
@@ -60,7 +61,7 @@ abstract class PListAdapter<ViewHolder : RecyclerView.ViewHolder?,Model>() : Rec
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        mapping(holder,arrayList.get(position),position)
+        mapping(holder, arrayList.get(position), position)
     }
 
     protected abstract fun mapping(holder: ViewHolder, model: Model, position: Int)

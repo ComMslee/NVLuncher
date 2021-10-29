@@ -19,16 +19,16 @@
         android:id="@+id/item_text_view_app"
         android:layout_width="@dimen/item_text_w"
         android:layout_height="@dimen/item_text_h"
-        android:gravity="center"
         android:layout_marginBottom="@dimen/item_margin_bottom"
-        android:lines="1"
-        android:ellipsize="end"
-        android:autoSizeMinTextSize="@dimen/item_text_size_min"
         android:autoSizeMaxTextSize="@dimen/item_text_size_max"
+        android:autoSizeMinTextSize="@dimen/item_text_size_min"
         android:autoSizeTextType="uniform"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:lines="1"
         android:textColor="@color/white"
         tools:text="@string/app_name" />
-<!--    android:textSize="@dimen/item_text_size"-->
+    <!--    android:textSize="@dimen/item_text_size"-->
     <!--    android:maxLength="8"-->
 
 </LinearLayout>

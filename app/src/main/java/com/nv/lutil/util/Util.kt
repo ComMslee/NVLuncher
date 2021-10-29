@@ -86,8 +86,7 @@ object Util {
 
     fun iso8601toDate(strDate: String): Date {
         val df1 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SS")
-        val result1: Date = df1.parse(strDate)
-        return result1
+        return df1.parse(strDate)
     }
 
 

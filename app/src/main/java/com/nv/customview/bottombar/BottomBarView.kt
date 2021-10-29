@@ -1,6 +1,5 @@
 package com.nv.customview.bottombar
 
-
 import android.app.AlertDialog
 import android.app.Instrumentation
 import android.content.Context
@@ -9,7 +8,6 @@ import android.provider.Settings
 import android.util.AttributeSet
 import android.view.KeyEvent
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
@@ -25,14 +23,12 @@ import gg.op.agro.util.Util
 import kotlinx.android.synthetic.main.view_bottom_bar.view.*
 
 class BottomBarView : ConstraintLayout {
-    var pager :  ViewPager2? = null
-    var onLocationChangedListener : OnItemClickListener<Long>? =null
-
+    var pager: ViewPager2? = null
+    var onLocationChangedListener: OnItemClickListener<Long>? = null
 
     constructor(context: Context) : super(context) {
         init()
     }
-
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         init()
@@ -46,11 +42,8 @@ class BottomBarView : ConstraintLayout {
         init()
     }
 
-
-
-    fun init(){
+    private fun init() {
         val view: View = View.inflate(context, R.layout.view_bottom_bar, this)
-
 
         filterTouchesWhenObscured = true
 
@@ -59,36 +52,35 @@ class BottomBarView : ConstraintLayout {
         }
 
         bottom_bar_image_view_sound.setOnClickListener {
-            Thread(Runnable {
+            Thread {
                 Instrumentation()
                     .sendKeyDownUpSync(KeyEvent.KEYCODE_VOLUME_UP)
-            }).start()
+            }.start()
         }
 
         bottom_bar_image_view_app_list.setOnClickListener {
-            context.startActivity(Intent(context,MainActivity::class.java))
-
-            pager?.setCurrentItem(1,true)
+            context.startActivity(Intent(context, MainActivity::class.java))
+            pager?.setCurrentItem(1, true)
 
         }
         bottom_bar_image_view_home.setOnClickListener {
-
-            pager?.setCurrentItem(0,true)
-            context.startActivity(Intent(context,MainActivity::class.java))
+            pager?.setCurrentItem(0, true)
+            context.startActivity(Intent(context, MainActivity::class.java))
         }
 
         bottom_bar_image_view_back.setOnClickListener {
-            Thread(Runnable {
+            Thread {
                 Instrumentation()
                     .sendKeyDownUpSync(KeyEvent.KEYCODE_BACK)
-            }).start()
+            }.start()
         }
 
         bottom_bar_image_view_setting.setOnClickListener {
 
             val spinner = Spinner(context)
             val userNames = arrayOf("아래", "왼쪽", "오른쪽")
-            val arrayadapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, userNames)
+            val arrayadapter =
+                ArrayAdapter(context, android.R.layout.simple_spinner_item, userNames)
             spinner.adapter = arrayadapter
 
 
@@ -99,76 +91,60 @@ class BottomBarView : ConstraintLayout {
             val alertDialog = alertDialogBuilder.create()
             alertDialog.show()
 
-            var sel = Util.getSharedPreferences(context)!!.getInt(SharedPreferencesKeys.BAR,0)
-            spinner.setSelection(sel,false)
+            var sel = Util.getSharedPreferences(context)!!.getInt(SharedPreferencesKeys.BAR, 0)
+            spinner.setSelection(sel, false)
 
-            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
                     view: View?,
                     position: Int,
                     id: Long
                 ) {
-
                     setPosition(position)
-                    onLocationChangedListener?.onItemClick(position,id)
+                    onLocationChangedListener?.onItemClick(position, id)
                     alertDialog.hide()
 
-                    var editor =Util.getEditor(context)
-                    editor?.putInt(SharedPreferencesKeys.BAR,position)
+                    var editor = Util.getEditor(context)
+                    editor?.putInt(SharedPreferencesKeys.BAR, position)
                     editor?.commit()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
-
                 }
-
             }
         }
 
-        var sel = Util.getSharedPreferences(context)!!.getInt(SharedPreferencesKeys.BAR,0)
+        var sel = Util.getSharedPreferences(context)!!.getInt(SharedPreferencesKeys.BAR, 0)
 
         setPosition(sel)
-
     }
 
-    fun setPosition( position : Int){
-        var orientation : Int = 0
-        when(position){
-            0->{
-
-
-
-                orientation = LinearLayout.HORIZONTAL
+    fun setPosition(position: Int) {
+        var orientation = when (position) {
+            1, 2 -> {
+                LinearLayout.VERTICAL
             }
-            1,2->{
-
-
-
-
-                orientation= LinearLayout.VERTICAL
-
-
-
+            else -> {
+                LinearLayout.HORIZONTAL
             }
         }
 
-        if(bottom_bar_ly_bar.orientation == orientation) return
+        if (bottom_bar_ly_bar.orientation == orientation) return
 
         bottom_bar_ly_bar.orientation = orientation
-        var layoutParams = bottom_bar_ly_bar.layoutParams
-        var temp = layoutParams.width
+        val layoutParams = bottom_bar_ly_bar.layoutParams
+        val temp = layoutParams.width
         layoutParams.width = layoutParams.height
         layoutParams.height = temp
         bottom_bar_ly_bar.layoutParams = layoutParams
 
         bottom_bar_ly_bar.children.forEach {
-            var layoutParams = it.layoutParams
-            var temp = layoutParams.width
+            val layoutParams = it.layoutParams
+            val temp = layoutParams.width
             layoutParams.width = layoutParams.height
             layoutParams.height = temp
             it.layoutParams = layoutParams
         }
     }
-
 }

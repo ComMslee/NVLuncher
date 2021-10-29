@@ -15,10 +15,10 @@ import java.util.*
  * Implementation of App Widget functionality.
  */
 class NVClock : AppWidgetProvider() {
-
     private val WIDGET_UPDATE_INTERVAL = 1000
     private var mSender: PendingIntent? = null
     private var mManager: AlarmManager? = null
+
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -34,7 +34,6 @@ class NVClock : AppWidgetProvider() {
         super.onReceive(context, intent)
         val action = intent!!.action
         // 위젯 업데이트 인텐트를 수신했을 때
-        // 위젯 업데이트 인텐트를 수신했을 때
         if (action == "android.appwidget.action.APPWIDGET_UPDATE") {
             removePreviousAlarm()
             val firstTime =
@@ -46,7 +45,6 @@ class NVClock : AppWidgetProvider() {
             removePreviousAlarm()
         }
     }
-
 
     fun removePreviousAlarm() {
         if (mManager != null && mSender != null) {
@@ -70,12 +68,12 @@ internal fun updateAppWidget(
     appWidgetManager: AppWidgetManager,
     appWidgetId: Int
 ) {
-    var c: Date = Calendar.getInstance().getTime()
+    val c: Date = Calendar.getInstance().time
 
-    var df = SimpleDateFormat("aa hh:mm", Locale.getDefault())
-    var formattedDate: String = df.format(c)
+    val df = SimpleDateFormat("aa hh:mm", Locale.getDefault())
+    val formattedDate = df.format(c)
     // Construct the RemoteViews object
-    var views = RemoteViews(context.packageName, R.layout.n_v_clock)
+    val views = RemoteViews(context.packageName, R.layout.n_v_clock)
     views.setTextViewText(R.id.clock_tv_time, formattedDate)
 
     // Instruct the widget manager to update the widget

@@ -47,7 +47,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -58,7 +57,6 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
 //        home_ly_widget_left.setOnLongClickListener {
 //            selectWidget(REQUEST_PICK_APPWIDGET_LEFT)
 //            true
@@ -73,10 +71,10 @@ class HomeFragment : Fragment() {
         }
 
         main_image_view_logo.setOnLongClickListener {
-            var logoView = LogoListView(context!!)
+            var logoView = LogoListView(requireContext())
             logoView.onItemClickListener = this::onLogoClick
 
-            alertImages = AlertDialog.Builder(context)
+            alertImages = AlertDialog.Builder(requireContext())
                 .setTitle(getString(R.string.choose_the_logo))
                 .setView(logoView)
                 .setNegativeButton(getString(R.string.cancle)) { dialogInterface: DialogInterface, i: Int ->
@@ -100,8 +98,6 @@ class HomeFragment : Fragment() {
 //            widgetData = Gson().fromJson(strWidget, WidgetData::class.java)
 //        }
 //
-//
-//
 //        var classNameLeft = widgetData.classNameLeft
 //        var packageNameLeft = widgetData.packageNameLeft
 //        loadWidget(packageNameLeft, classNameLeft, REQUEST_PICK_APPWIDGET_LEFT)
@@ -111,14 +107,11 @@ class HomeFragment : Fragment() {
 //        loadWidget(packageNameRight, classNameRight, REQUEST_PICK_APPWIDGET_RIGHT)
 
         var logoPosition = sharedPreferences?.getInt(SharedPreferencesKeys.LOGO, 0)!!
-
-
         var drawables = resources.obtainTypedArray(R.array.logos)
 
         main_image_view_logo.setImageDrawable(drawables.getDrawable(logoPosition))
 
-
-        var strApps = sharedPreferences?.getString(SharedPreferencesKeys.APPS, "")
+        var strApps = sharedPreferences.getString(SharedPreferencesKeys.APPS, "")
         apps = ArrayList()
         if (strApps.isNullOrEmpty()) {
             apps.add(
@@ -305,7 +298,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadWidget(appWidgetInfo: AppWidgetProviderInfo, requestCode: Int) {
-        if (appWidgetInfo?.configure != null) {
+        if (appWidgetInfo.configure != null) {
             val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_CONFIGURE)
             intent.component = appWidgetInfo.configure
             intent.putExtra(

@@ -32,7 +32,6 @@ class AppHorizontalView : RecyclerView {
         init()
     }
 
-
     fun init() {
         val appListAdapter = AppListAdapter(1)
         appListAdapter.onItemClickListener = OnItemClickListener { position, model ->
@@ -40,7 +39,7 @@ class AppHorizontalView : RecyclerView {
         }
 
         adapter = appListAdapter
-        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         addItemDecoration(
             SpacesHorizontalItemDecoration(

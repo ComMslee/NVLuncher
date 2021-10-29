@@ -1,4 +1,4 @@
-package com.nv.nvluncher;
+package com.nv.nvluncher
 
 import android.accessibilityservice.AccessibilityService
 import android.view.accessibility.AccessibilityEvent
