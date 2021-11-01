@@ -223,7 +223,9 @@ object Util {
             var model = models[i]
             if (packageManager.getLaunchIntentForPackage(model.packageName) != null) {
                 Log.e("mslee", "packageName ${model.packageName}"); //mslee add log
-                if(model.packageName == "com.nv.nvluncher") continue
+                if(model.packageName == "com.nv.nvluncher") {
+                    continue
+                }
                 apps.add(
                     AppData(
                         model.loadLabel(packageManager),

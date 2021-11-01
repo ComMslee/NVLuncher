@@ -3,6 +3,8 @@ package com.nv.customview.applist
 import android.content.Context
 import android.content.pm.PackageManager
 import android.util.AttributeSet
+import androidx.core.view.setPadding
+import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nv.lutil.listener.OnItemClickListener
@@ -32,7 +34,7 @@ class AppHorizontalView : RecyclerView {
         init()
     }
 
-    fun init() {
+    private fun init() {
         val appListAdapter = AppListAdapter(1)
         appListAdapter.onItemClickListener = OnItemClickListener { position, model ->
             onItemClickListener?.let { it(position, model) }
