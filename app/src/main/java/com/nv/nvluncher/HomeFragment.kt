@@ -340,27 +340,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun makeAppDataNavi(it: String) = AppData(
-        "Navigation",
-        it,
-        requireContext().getDrawable(R.drawable.bg_selector_navigation)!!
+        "Navigation", it, requireContext().getDrawable(R.drawable.bg_selector_navigation)!!
     )
 
     private fun makeAppDataVideo(it: String) = AppData(
-        "Video",
-        it,
-        requireContext().getDrawable(R.drawable.bg_selector_video)!!
+        "Video", it, requireContext().getDrawable(R.drawable.bg_selector_video)!!
     )
 
     private fun makeAppDataMusic(it: String) = AppData(
-        "Music",
-        it,
-        requireContext().getDrawable(R.drawable.bg_selector_music)!!
+        "Music", it, requireContext().getDrawable(R.drawable.bg_selector_music)!!
     )
 
     private fun makeAppDataInternet(it: String) = AppData(
-        "Internet",
-        it,
-        requireContext().getDrawable(R.drawable.bg_selector_ineternet)!!
+        "Internet", it, requireContext().getDrawable(R.drawable.bg_selector_ineternet)!!
     )
 
     private fun mappingApps() {
@@ -376,8 +368,12 @@ class HomeFragment : Fragment() {
         appViews.forEachIndexed { index, linearLayout ->
             linearLayout.setOnClickListener {
                 requireContext().apply {
-                    val packageName = apps[index].packageName.replace(Regex("^n_"), "")
-                    startActivity(packageManager.getLaunchIntentForPackage(packageName))
+                    try {
+                        val packageName = apps[index].packageName.replace(Regex("^n_"), "")
+                        startActivity(packageManager.getLaunchIntentForPackage(packageName))
+                    } catch (e: java.lang.Exception) {
+                        e.printStackTrace()
+                    }
                 }
             }
 

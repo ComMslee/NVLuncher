@@ -134,6 +134,9 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         unregisterReceiver(bottomReceiver)
         unregisterReceiver(appReceiver)
+        contentObserver?.apply {
+            contentResolver.unregisterContentObserver(this)
+        }
     }
 
     private fun setWindowFlag(bits: Int, on: Boolean) {
@@ -218,7 +221,7 @@ class MainActivity : AppCompatActivity() {
     val ACTION_APP = "com.nv.nvluncher.ACTION_APP"
     val ACTION_BAR = "android.intent.action.lb.navbaropt"
 
-    val appReceiver = object : BroadcastReceiver() {
+    private val appReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             when (intent.action) {
                 ACTION_PACKAGE_REMOVED,
@@ -234,7 +237,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    val bottomReceiver = object : BroadcastReceiver() {
+    private val bottomReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             when (intent.action) {
                 ACTION_HOME -> {

@@ -32,20 +32,26 @@ class TopBarView : ConstraintLayout {
         val view: View = View.inflate(context, R.layout.view_top_bar, this)
 
         top_bar_store.setOnClickListener {
-            val launchIntent = context.packageManager
-                .getLaunchIntentForPackage("com.android.vending")
-            context.startActivity(launchIntent)
-
+            try {
+                context.packageManager.getLaunchIntentForPackage("com.android.vending").apply {
+                    context.startActivity(this)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
-        top_bar_setting.setOnClickListener {
-            val launchIntent = context.packageManager
-                .getLaunchIntentForPackage("com.android.settings")
-            context.startActivity(launchIntent)
 
+        top_bar_setting.setOnClickListener {
+            try {
+                context.packageManager.getLaunchIntentForPackage("com.android.settings").apply {
+                    context.startActivity(this)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
 
 //        val c: Date = Calendar.getInstance().getTime()
-//
 //        val df = SimpleDateFormat("dd-MMMM-yyyy", Locale.getDefault())
 //        val formattedDate: String = df.format(c)
 //
