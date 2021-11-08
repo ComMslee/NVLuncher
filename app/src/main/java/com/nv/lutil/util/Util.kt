@@ -223,7 +223,8 @@ object Util {
             var model = models[i]
             if (packageManager.getLaunchIntentForPackage(model.packageName) != null) {
                 Log.e("mslee", "packageName ${model.packageName}"); //mslee add log
-                if(model.packageName == "com.nv.nvluncher") {
+                if(model.packageName == "com.nv.nvluncher"
+                    || model.packageName == "org.chromium.webview_shell") {
                     continue
                 }
                 apps.add(

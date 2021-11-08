@@ -1,6 +1,7 @@
 package com.nv.nvluncher
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,7 @@ class AppListFragment : Fragment() {
     }
 
     override fun onResume() {
+        Log.e("mslee", "onResume"); //mslee add log
         super.onResume()
 
         if (isFirst) {

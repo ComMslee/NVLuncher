@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.*
 import android.content.IntentFilter
-import android.content.pm.PackageManager
 import android.database.ContentObserver
 import android.os.Bundle
 import android.os.Handler
@@ -77,13 +76,14 @@ class MainActivity : AppCompatActivity() {
         contentObserver = object : ContentObserver(Handler(mainLooper)) {
             override fun onChange(selfChange: Boolean) {
                 Log.e("LB_NavBar", "onchange LB_NAVBAR_POSITION")
+//                viewPager.setCurrentItem(0, true)
+//                viewPager.setCurrentItem(1, true)
             }
         }
 
         contentObserver?.let {
             contentResolver.registerContentObserver(
-                Settings.Global.getUriFor("lb_navabar_position"), false,
-                it
+                Settings.Global.getUriFor("lb_navabar_position"), false, it
             )
         }
 
