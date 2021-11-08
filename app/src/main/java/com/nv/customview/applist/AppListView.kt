@@ -4,17 +4,18 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.util.AttributeSet
 import android.util.Log
-import android.widget.Toast
+//import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nv.lutil.listener.OnItemClickListener
 import com.nv.nvluncher.MainActivity
-import gg.op.agro.decoration.SpacesGridItemDecoration
+import com.nv.customview.decoration.SpacesGridItemDecoration
 import gg.op.agro.util.Util
 import kotlin.reflect.KFunction0
 import kotlin.reflect.KFunction2
 
 class AppListView : RecyclerView {
+    val TAG = "AppListView"
     var onItemClickListener: KFunction2<Int, AppData?, Unit>? = null
     var onEmptyListener: KFunction0<Unit>? = null
     lateinit var packageManager: PackageManager
@@ -43,9 +44,11 @@ class AppListView : RecyclerView {
                 .getLaunchIntentForPackage(model.packageName)
             context.startActivity(launchIntent)
 
-            Toast.makeText(context, model.packageName, Toast.LENGTH_LONG).show()
+//            Toast.makeText(context, model.packageName, Toast.LENGTH_LONG).show()
 
-            Log.e("packageName ", model.packageName)
+            if (Util.DEBUG) {
+                Log.e("packageName ", model.packageName)
+            }
 
             if (appListAdapter.itemCount == 0) {
                 onEmptyListener?.let { it() }
@@ -65,8 +68,9 @@ class AppListView : RecyclerView {
     fun load(packageManager: PackageManager) {
         this.packageManager = packageManager
 
+        if (isLoading) return
+
         synchronized(isLoading) {
-            if (isLoading) return
             isLoading = true
             var preAppData: ArrayList<AppData> = ArrayList()
             MainActivity.preAppData?.let {

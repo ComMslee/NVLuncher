@@ -16,7 +16,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.nv.adapter.PagerAdapter
 import com.nv.customview.applist.AppData
-import gg.op.agro.util.SharedPreferencesKeys
+import com.nv.lutil.util.SharedPreferencesKeys
 import gg.op.agro.util.Util
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_bottom_bar.view.*
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
         contentObserver = object : ContentObserver(Handler(mainLooper)) {
             override fun onChange(selfChange: Boolean) {
-                Log.e("LB_NavBar", "onchange LB_NAVBAR_POSITION")
+                Log.e("LB_NavBar", "onchange LB_NAVBAR_POSITION ${selfChange}")
 //                viewPager.setCurrentItem(0, true)
 //                viewPager.setCurrentItem(1, true)
             }

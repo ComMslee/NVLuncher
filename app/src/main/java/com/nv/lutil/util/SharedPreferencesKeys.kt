@@ -1,4 +1,4 @@
-package gg.op.agro.util
+package com.nv.lutil.util
 
 //프리퍼런스 키
 object SharedPreferencesKeys {

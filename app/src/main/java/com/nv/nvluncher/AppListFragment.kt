@@ -24,9 +24,7 @@ class AppListFragment : Fragment() {
     }
 
     override fun onResume() {
-        Log.e("mslee", "onResume"); //mslee add log
         super.onResume()
-
         if (isFirst) {
             isFirst = false
             if (app_list.adapter?.isEmpty() == true) {

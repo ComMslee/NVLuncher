@@ -1,4 +1,4 @@
-package gg.op.agro.p
+package com.nv.lutil.p
 
 import androidx.recyclerview.widget.RecyclerView
 import com.nv.lutil.listener.OnEmptyListener
@@ -45,7 +45,7 @@ abstract class PListAdapter<ViewHolder : RecyclerView.ViewHolder?, Model> :
     }
 
     fun get(position: Int): Model {
-        return arrayList.get(position)
+        return arrayList[position]
     }
 
     fun getAll(): ArrayList<Model> {
@@ -61,7 +61,7 @@ abstract class PListAdapter<ViewHolder : RecyclerView.ViewHolder?, Model> :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        mapping(holder, arrayList.get(position), position)
+        mapping(holder, arrayList[position], position)
     }
 
     protected abstract fun mapping(holder: ViewHolder, model: Model, position: Int)

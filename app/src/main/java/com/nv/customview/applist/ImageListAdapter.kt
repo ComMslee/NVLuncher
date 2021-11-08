@@ -4,12 +4,12 @@ import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import gg.op.agro.p.PListAdapter
+import com.nv.lutil.p.PListAdapter
 
-class ImageListAdapter : PListAdapter<ImageListAdapter.ViewHolder, Drawable>(){
+class ImageListAdapter : PListAdapter<ImageListAdapter.ViewHolder, Drawable>() {
     inner class ViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
-        ImageView(parent.context)) {
-
+        ImageView(parent.context)
+    ) {
         init {
             itemView.setOnClickListener {
                 onItemClickListener?.onItemClick(adapterPosition, arrayList[adapterPosition])
@@ -18,7 +18,7 @@ class ImageListAdapter : PListAdapter<ImageListAdapter.ViewHolder, Drawable>(){
     }
 
     override fun mapping(holder: ImageListAdapter.ViewHolder, model: Drawable, position: Int) {
-        val img  = holder.itemView as ImageView
+        val img = holder.itemView as ImageView
         img.setImageDrawable(model)
     }
 

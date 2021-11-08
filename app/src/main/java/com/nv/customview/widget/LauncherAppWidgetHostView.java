@@ -4,11 +4,8 @@ import android.appwidget.AppWidgetHostView;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-
-import com.nv.nvluncher.R;
 
 public class LauncherAppWidgetHostView extends AppWidgetHostView {
     private boolean mHasPerformedLongPress;
@@ -19,7 +16,6 @@ public class LauncherAppWidgetHostView extends AppWidgetHostView {
         super(context);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
-
 
 
     public boolean onInterceptTouchEvent(MotionEvent ev) {

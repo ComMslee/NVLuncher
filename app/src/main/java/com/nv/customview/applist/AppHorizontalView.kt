@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nv.lutil.listener.OnItemClickListener
-import gg.op.agro.decoration.SpacesHorizontalItemDecoration
+import com.nv.customview.decoration.SpacesHorizontalItemDecoration
 import gg.op.agro.util.Util
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

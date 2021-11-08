@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.nv.lutil.p.PListAdapter
 import com.nv.nvluncher.R
-import gg.op.agro.p.PListAdapter
 import kotlinx.android.synthetic.main.item_app.view.*
 
 class AppListAdapter() : PListAdapter<RecyclerView.ViewHolder, AppData>() {

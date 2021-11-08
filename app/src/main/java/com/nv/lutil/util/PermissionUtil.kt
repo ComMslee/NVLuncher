@@ -1,4 +1,4 @@
-package gg.op.agro.util
+package com.nv.lutil.util
 
 import android.content.Context
 import android.content.pm.PackageManager

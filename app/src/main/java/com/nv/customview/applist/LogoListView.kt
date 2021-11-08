@@ -1,7 +1,6 @@
 package com.nv.customview.applist
 
 import android.content.Context
-import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.nv.nvluncher.R
 import gg.op.agro.util.Util
-import kotlin.reflect.KFunction0
 import kotlin.reflect.KFunction2
 
 class LogoListView : HorizontalScrollView {
@@ -34,9 +32,10 @@ class LogoListView : HorizontalScrollView {
     }
 
     private fun init() {
-        linearLayout = LinearLayout(context)
-        linearLayout.orientation = LinearLayout.HORIZONTAL
-        linearLayout.minimumHeight = Util.convertDpToPixel(100f, context)
+        linearLayout = LinearLayout(context).apply {
+            orientation = LinearLayout.HORIZONTAL
+            minimumHeight = Util.convertDpToPixel(100f, context)
+        }
 
         addView(
             linearLayout,

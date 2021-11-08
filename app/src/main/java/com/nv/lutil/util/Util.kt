@@ -10,6 +10,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.util.Patterns
 import com.nv.customview.applist.AppData
+import com.nv.lutil.util.SharedPreferencesKeys
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,6 +18,7 @@ import java.util.regex.Pattern
 
 
 object Util {
+    val DEBUG = false
 
     fun getYouTubeId(youTubeUrl: String): String? {
         val pattern = "(?<=youtu.be/|watch\\?v=|/videos/|embed\\/)[^#\\&\\?]*"
@@ -222,9 +224,13 @@ object Util {
         for (i in 0 until models.size) {
             var model = models[i]
             if (packageManager.getLaunchIntentForPackage(model.packageName) != null) {
-                Log.e("mslee", "packageName ${model.packageName}"); //mslee add log
+                if (DEBUG) {
+                    Log.e("mslee", "packageName ${model.packageName}"); //mslee add log
+                }
                 if(model.packageName == "com.nv.nvluncher"
-                    || model.packageName == "org.chromium.webview_shell") {
+                    || model.packageName == "com.google.android.inputmethod.latin"
+                    || model.packageName == "org.chromium.webview_shell"
+                ) {
                     continue
                 }
                 apps.add(

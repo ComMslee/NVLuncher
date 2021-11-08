@@ -25,7 +25,7 @@ import com.nv.customview.applist.LogoListView
 import com.nv.customview.widget.WidgetHost
 import com.nv.customview.widget.WidgetView
 import com.nv.lutil.model.WidgetData
-import gg.op.agro.util.SharedPreferencesKeys
+import com.nv.lutil.util.SharedPreferencesKeys
 import gg.op.agro.util.Util
 import kotlinx.android.synthetic.main.fragment_home.*
 

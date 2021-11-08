@@ -27,7 +27,6 @@ class TopBarView : ConstraintLayout {
         init()
     }
 
-
     fun init() {
         val view: View = View.inflate(context, R.layout.view_top_bar, this)
 

@@ -2,10 +2,10 @@ package com.nv.customview.widget
 
 import android.appwidget.AppWidgetHostView
 import android.content.Context
-import android.view.*
+import android.view.MotionEvent
+import android.view.ViewConfiguration
 
-
-class WidgetView : AppWidgetHostView{
+class WidgetView : AppWidgetHostView {
     var longClick: OnLongClickListener? = null
     private var mHasPerformedLongPress = false
     private var mPendingCheckForLongPress: CheckForLongPress? = null
@@ -54,7 +54,6 @@ class WidgetView : AppWidgetHostView{
         // Otherwise continue letting touch events fall through to children
         return false
     }
-
 
 
     private fun postCheckForLongClick() {
