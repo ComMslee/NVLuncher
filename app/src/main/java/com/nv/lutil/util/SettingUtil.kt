@@ -1,7 +1,6 @@
 package com.nv.lutil.util
 
 import android.content.Context
-import gg.op.agro.util.Util
 
 object SettingUtil {
 

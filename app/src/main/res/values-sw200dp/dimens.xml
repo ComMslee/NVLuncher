@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="margin_120dp">120dp</dimen>
+    <dimen name="padding_10dp">10dp</dimen>
+    <dimen name="padding_20dp">20dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_60dp">60dp</dimen>
+    <dimen name="size_20dp">20dp</dimen>
+    <dimen name="text_size_32sp">32sp</dimen>
+    <dimen name="text_size_24sp">24dp</dimen>
+
+    <!-- HOME -->
+    <dimen name="logo_w">290dp</dimen>
+    <dimen name="logo_h">90dp</dimen>
+
+    <dimen name="side_w">214dp</dimen>
+    <dimen name="side_h">273dp</dimen>
+
+    <dimen name="iv_w">160dp</dimen>
+    <dimen name="iv_h">72dp</dimen>
+    <dimen name="iv_title_w">160dp</dimen>
+    <dimen name="iv_title_h">23dp</dimen>
+
+    <dimen name="item_w">45dp</dimen>
+    <dimen name="item_h">45dp</dimen>
+    <dimen name="item_text_w">50dp</dimen>
+    <dimen name="item_text_h">28dp</dimen>
+    <dimen name="item_text_size_min">9sp</dimen>
+    <dimen name="item_text_size_max">11sp</dimen>
+    <dimen name="item_margin_bottom">10dp</dimen>
+
+    <dimen name="fmt_w">118dp</dimen>
+    <dimen name="fmt_h">60dp</dimen>
+
+    <dimen name="pager_margin_top">@dimen/layout_view_top_bar_top_center_h</dimen>
+
+    <!---->
+    <dimen name="layout_view_top_bar_top_side_bar_w">98dp</dimen>
+    <dimen name="layout_view_top_bar_top_side_bar_h">50dp</dimen>
+    <dimen name="layout_view_top_bar_top_center_w">242dp</dimen>
+    <dimen name="layout_view_top_bar_top_center_h">52dp</dimen>
+    <dimen name="layout_view_top_bar_top_center_text">16dp</dimen>
+
+    <dimen name="layout_applist_margin_top">50dp</dimen>
+    <dimen name="layout_applist_padding_l">40dp</dimen>
+    <dimen name="layout_applist_padding_r">40dp</dimen>
+
+    <dimen name="layout_clock_tvtime_textsize">20dp</dimen>
+
+    <dimen name="layout_barbutton_bar_ly_bar_h">62dp</dimen>
+
+    <drawable name="main_bg">@drawable/main_bg_800</drawable>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">8dp</dimen>
+
+</resources>

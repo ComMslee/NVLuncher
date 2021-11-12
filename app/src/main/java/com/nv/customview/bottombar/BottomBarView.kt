@@ -19,7 +19,7 @@ import com.nv.lutil.listener.OnItemClickListener
 import com.nv.lutil.util.SharedPreferencesKeys
 import com.nv.nvluncher.MainActivity
 import com.nv.nvluncher.R
-import gg.op.agro.util.Util
+import com.nv.lutil.util.Util
 import kotlinx.android.synthetic.main.view_bottom_bar.view.*
 
 class BottomBarView : ConstraintLayout {

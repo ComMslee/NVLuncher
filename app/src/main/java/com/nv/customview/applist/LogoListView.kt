@@ -8,7 +8,7 @@ import android.widget.HorizontalScrollView
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.nv.nvluncher.R
-import gg.op.agro.util.Util
+import com.nv.lutil.util.Util
 import kotlin.reflect.KFunction2
 
 class LogoListView : HorizontalScrollView {

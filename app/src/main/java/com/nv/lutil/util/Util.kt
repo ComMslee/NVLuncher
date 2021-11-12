@@ -1,4 +1,4 @@
-package gg.op.agro.util
+package com.nv.lutil.util
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -10,7 +10,6 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.util.Patterns
 import com.nv.customview.applist.AppData
-import com.nv.lutil.util.SharedPreferencesKeys
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -62,8 +61,6 @@ object Util {
         var matcher = Patterns.EMAIL_ADDRESS.matcher(email)
 
         return matcher.matches()
-
-
     }
 
     fun getRealPathFromURI(
@@ -227,7 +224,7 @@ object Util {
                 if (DEBUG) {
                     Log.e("mslee", "packageName ${model.packageName}"); //mslee add log
                 }
-                if(model.packageName == "com.nv.nvluncher"
+                if (model.packageName == "com.nv.nvluncher"
                     || model.packageName == "com.google.android.inputmethod.latin"
                     || model.packageName == "org.chromium.webview_shell"
                 ) {
