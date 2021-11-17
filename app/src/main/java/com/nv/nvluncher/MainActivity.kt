@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.Intent.*
 import android.content.IntentFilter
 import android.database.ContentObserver
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.provider.Settings
@@ -20,8 +21,12 @@ import com.nv.lutil.util.SharedPreferencesKeys
 import com.nv.lutil.util.Util
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_bottom_bar.view.*
+import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
+import android.R.attr.name
+import java.lang.Exception
+
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
@@ -101,7 +106,50 @@ class MainActivity : AppCompatActivity() {
             addDataScheme("package")
             registerReceiver(appReceiver, this)
         }
+
+//        isRooted()
     }
+
+//    private fun isRooted(): Boolean {
+//        return findBinary("su")
+//    }
+//
+//    fun findBinary(binaryName: String): Boolean {
+//        var found = false
+//        if (!found) {
+//            val places = arrayOf(
+//                "/sbin/", "/system/bin/", "/system/xbin/",
+//                "/data/local/xbin/", "/data/local/bin/",
+//                "/system/sd/xbin/", "/system/bin/failsafe/", "/data/local/"
+//            )
+//            for (where in places) {
+//                if (File(where + binaryName).exists()) {
+//                    found = true
+//                    break
+//                }
+//            }
+//            try {
+//                val file = File("/system/app/Superuser.apk")
+//                if (file.exists()) {
+//                    Log.e(
+//                        "ERROR", "Unable to find icon for package '"
+//                                + "apk found"
+//                    )
+//                    found = true
+//                }
+//            } catch (e1: Exception) {
+//                // ignore
+//            }
+//
+//            try {
+//                Runtime.getRuntime().exec("su")
+//                found = true
+//            }catch (e : Exception){
+//                e.printStackTrace()
+//            }
+//        }
+//        return found
+//    }
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)

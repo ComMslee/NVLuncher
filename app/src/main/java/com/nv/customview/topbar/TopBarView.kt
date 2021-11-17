@@ -31,43 +31,43 @@ class TopBarView : ConstraintLayout {
         val view: View = View.inflate(context, R.layout.view_top_bar, this)
 
         top_bar_store.setOnClickListener {
-            try {
-                context.packageManager.getLaunchIntentForPackage("com.android.vending").apply {
-                    context.startActivity(this)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            callApp("com.android.vending")
         }
 
         top_bar_setting.setOnClickListener {
-            try {
-                context.packageManager.getLaunchIntentForPackage("com.android.settings").apply {
-                    context.startActivity(this)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            callApp("com.android.settings")
         }
-
-//        val c: Date = Calendar.getInstance().getTime()
-//        val df = SimpleDateFormat("dd-MMMM-yyyy", Locale.getDefault())
-//        val formattedDate: String = df.format(c)
-//
-//        top_bar_date.text = formattedDate
 
         var timerTask = object : TimerTask() {
             override fun run() {
-                val c: Date = Calendar.getInstance().time
+//                val df = SimpleDateFormat("dd-MMMM-yyyy", Locale.getDefault())
+                val language = Locale.getDefault()
+                val format =
+                    android.text.format.DateFormat.getBestDateTimePattern(language, "yyyyMMMMdd")
+                val df = SimpleDateFormat(format, Locale.getDefault())
 
-                val df = SimpleDateFormat("dd-MMMM-yyyy", Locale.getDefault())
+                val c: Date = Calendar.getInstance().time
                 val formattedDate: String = df.format(c)
 
-                top_bar_date.post {
-                    top_bar_date.text = formattedDate
+                top_bar_date.apply {
+                    if (top_bar_date.text.toString() != formattedDate) {
+                        post {
+                            text = formattedDate
+                        }
+                    }
                 }
             }
         }
-        Timer().schedule(timerTask, 1000, 1000)
+        Timer().schedule(timerTask, 0, 1000)
+    }
+
+    fun callApp(packagename: String) {
+        try {
+            context.packageManager.getLaunchIntentForPackage(packagename).apply {
+                context.startActivity(this)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }

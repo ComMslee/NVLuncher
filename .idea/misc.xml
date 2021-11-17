@@ -60,7 +60,10 @@
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/n_v_clock.xml" value="0.9936708860759493" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/view_top_bar.xml" value="0.33" />
         <entry key="..\:/_NVLauncher/NVLuncher/app/src/main/res/layout/viewpager_item.xml" value="0.11724856696195936" />
-        <entry key="..\:/___NVX8_NVLauncher/NVLuncher/app/src/main/res/layout/view_top_bar.xml" value="0.25" />
+        <entry key="..\:/___NVX8_NVLauncher/NVLuncher/app/src/main/res/drawable/bg_top_bar.xml" value="0.22314814814814815" />
+        <entry key="..\:/___NVX8_NVLauncher/NVLuncher/app/src/main/res/drawable/ic_baseline_volume_mute_24.xml" value="0.30462962962962964" />
+        <entry key="..\:/___NVX8_NVLauncher/NVLuncher/app/src/main/res/drawable/ic_baseline_volume_up_24.xml" value="0.1" />
+        <entry key="..\:/___NVX8_NVLauncher/NVLuncher/app/src/main/res/layout/view_top_bar.xml" value="0.2" />
       </map>
     </option>
   </component>

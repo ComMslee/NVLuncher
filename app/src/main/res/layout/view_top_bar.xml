@@ -26,7 +26,8 @@
         android:layout_height="@dimen/layout_view_top_bar_top_center_h"
         android:background="@drawable/m_top_center_bg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/top_bar_date"
@@ -35,7 +36,6 @@
             android:layout_gravity="center_horizontal"
             android:background="@drawable/bg_top_date"
             android:gravity="center"
-            android:text="04. September. 2020"
             android:textColor="@color/white"
             android:textSize="@dimen/layout_view_top_bar_top_center_text"
             app:layout_constraintBottom_toBottomOf="parent"
