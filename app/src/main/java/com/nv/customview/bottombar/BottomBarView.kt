@@ -63,6 +63,7 @@ class BottomBarView : ConstraintLayout {
             pager?.setCurrentItem(1, true)
 
         }
+
         bottom_bar_image_view_home.setOnClickListener {
             pager?.setCurrentItem(0, true)
             context.startActivity(Intent(context, MainActivity::class.java))
@@ -76,7 +77,6 @@ class BottomBarView : ConstraintLayout {
         }
 
         bottom_bar_image_view_setting.setOnClickListener {
-
             val spinner = Spinner(context)
             val userNames = arrayOf("아래", "왼쪽", "오른쪽")
             val arrayadapter =

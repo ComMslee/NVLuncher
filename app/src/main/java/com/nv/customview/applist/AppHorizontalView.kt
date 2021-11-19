@@ -10,6 +10,7 @@ import com.nv.customview.decoration.SpacesHorizontalItemDecoration
 import com.nv.lutil.util.Util
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.*
 import kotlin.reflect.KFunction2
 
 class AppHorizontalView : RecyclerView {
@@ -34,8 +35,14 @@ class AppHorizontalView : RecyclerView {
 
     private fun init() {
         val appListAdapter = AppListAdapter(1)
-        appListAdapter.onItemClickListener = OnItemClickListener { position, model ->
-            onItemClickListener?.let { it(position, model) }
+        appListAdapter.onItemClickListener = object : OnItemClickListener<AppData> {
+            override fun onItemClick(position: Int, model: AppData) {
+                onItemClickListener?.let { it(position, model) }
+            }
+
+            override fun onItemLongClick(position: Int, model: AppData): Boolean {
+                return false
+            }
         }
 
         adapter = appListAdapter

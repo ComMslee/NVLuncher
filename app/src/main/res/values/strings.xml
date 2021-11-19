@@ -5,4 +5,6 @@
     <string name="cancle">cancle</string>
     <string name="choose_the_logo">choose the logo</string>
     <string name="choose_the_app">choose the app</string>
+
+    <string name="msg_delete_systemapp">System apps cannot be deleted.</string>
 </resources>

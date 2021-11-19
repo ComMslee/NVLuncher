@@ -16,7 +16,14 @@ class AppListAdapter() : PListAdapter<RecyclerView.ViewHolder, AppData>() {
 
         init {
             itemView.setOnClickListener {
-                onItemClickListener?.onItemClick(adapterPosition, arrayList.get(adapterPosition))
+                onItemClickListener?.onItemClick(adapterPosition, arrayList[adapterPosition])
+            }
+            itemView.setOnLongClickListener {
+                onItemClickListener?.let {
+                    it.onItemLongClick(adapterPosition, arrayList[adapterPosition])
+                } ?: kotlin.run {
+                    false
+                }
             }
         }
     }
