@@ -226,7 +226,7 @@ object Util {
                 }
                 if (model.packageName == "com.nv.nvluncher"
                     || model.packageName == "com.google.android.inputmethod.latin"
-//                    || model.packageName == "org.chromium.webview_shell"
+                    || model.packageName == "org.chromium.webview_shell"
                 ) {
                     continue
                 }

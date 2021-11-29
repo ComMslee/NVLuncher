@@ -119,7 +119,7 @@ class HomeFragment : Fragment() {
                 apps.add(makeAppDataVideo("n_android.rk.RockVideoPlayer"))
                 apps.add(makeAppDataMusic("n_com.android.music"))
 //                apps.add(makeAppDataInternet("n_acr.browser.barebones"))
-                apps.add(makeAppDataInternet("n_org.chromium.webview_shell"))
+                apps.add(makeAppDataInternet("n_com.android.chrome"))
             } else {
                 var packages: ArrayList<String> =
                     Gson().fromJson(strApps, object : TypeToken<ArrayList<String>>() {}.type)
