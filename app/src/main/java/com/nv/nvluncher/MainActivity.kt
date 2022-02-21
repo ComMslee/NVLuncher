@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.Intent.*
 import android.content.IntentFilter
 import android.database.ContentObserver
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.provider.Settings
@@ -21,11 +20,7 @@ import com.nv.lutil.util.SharedPreferencesKeys
 import com.nv.lutil.util.Util
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_bottom_bar.view.*
-import java.io.File
 import java.util.*
-import kotlin.collections.ArrayList
-import android.R.attr.name
-import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity() {

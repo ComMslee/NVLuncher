@@ -222,7 +222,7 @@ object Util {
             var model = models[i]
             if (packageManager.getLaunchIntentForPackage(model.packageName) != null) {
                 if (DEBUG) {
-                    Log.e("mslee", "packageName ${model.packageName}"); //mslee add log
+                    Log.e("mslee", "packageName ${model.packageName}") //mslee add log
                 }
                 if (model.packageName == "com.nv.nvluncher"
                     || model.packageName == "com.google.android.inputmethod.latin"
@@ -240,6 +240,6 @@ object Util {
             }
         }
 
-        return apps;
+        return apps
     }
 }

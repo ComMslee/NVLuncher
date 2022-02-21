@@ -107,7 +107,7 @@ class HomeFragment : Fragment() {
 //        loadWidget(packageNameRight, classNameRight, REQUEST_PICK_APPWIDGET_RIGHT)
 
         sharedPreferences?.let { sharedPreferences ->
-            sharedPreferences.getInt(SharedPreferencesKeys.LOGO, 0)?.let { logoPosition ->
+            sharedPreferences.getInt(SharedPreferencesKeys.LOGO, 0).let { logoPosition ->
                 val drawables = resources.obtainTypedArray(R.array.logos)
                 main_image_view_logo.setImageDrawable(drawables.getDrawable(logoPosition))
             }
