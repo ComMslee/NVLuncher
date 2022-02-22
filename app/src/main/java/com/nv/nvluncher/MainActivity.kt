@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
         contentObserver = object : ContentObserver(Handler(mainLooper)) {
             override fun onChange(selfChange: Boolean) {
-                Log.e("LB_NavBar", "onchange LB_NAVBAR_POSITION ${selfChange}")
+                Log.e("LB_NavBar", "onchange LB_NAVBAR_POSITION $selfChange")
 //                viewPager.setCurrentItem(0, true)
 //                viewPager.setCurrentItem(1, true)
             }
@@ -95,9 +95,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         IntentFilter().apply {
-            addAction(Intent.ACTION_PACKAGE_ADDED)
-            addAction(Intent.ACTION_PACKAGE_REPLACED)
-            addAction(Intent.ACTION_PACKAGE_REMOVED)
+            addAction(ACTION_PACKAGE_ADDED)
+            addAction(ACTION_PACKAGE_REPLACED)
+            addAction(ACTION_PACKAGE_REMOVED)
             addDataScheme("package")
             registerReceiver(appReceiver, this)
         }
@@ -148,7 +148,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        var mode = intent?.getIntExtra("mode", -1)
+        val mode = intent?.getIntExtra("mode", -1)
 
         val pageNo = if (mode == 1) { // ALL APPS
             1
@@ -232,17 +232,17 @@ class MainActivity : AppCompatActivity() {
         setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
     }
 
-    fun setTimer(view: View) {
-        var timerTask = object : TimerTask() {
-            override fun run() {
-                view.post {
-                    view.bottom_bar_ly_bar.visibility = View.GONE
-                    view.bottom_bar_hide.visibility = View.VISIBLE
-                }
-            }
-        }
-        Timer().schedule(timerTask, 5000)
-    }
+//    fun setTimer(view: View) {
+//        var timerTask = object : TimerTask() {
+//            override fun run() {
+//                view.post {
+//                    view.bottom_bar_ly_bar.visibility = View.GONE
+//                    view.bottom_bar_hide.visibility = View.VISIBLE
+//                }
+//            }
+//        }
+//        Timer().schedule(timerTask, 5000)
+//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

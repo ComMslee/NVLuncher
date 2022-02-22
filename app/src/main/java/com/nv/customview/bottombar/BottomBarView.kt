@@ -91,7 +91,7 @@ class BottomBarView : ConstraintLayout {
             val alertDialog = alertDialogBuilder.create()
             alertDialog.show()
 
-            var sel = Util.getSharedPreferences(context)!!.getInt(SharedPreferencesKeys.BAR, 0)
+            val sel = Util.getSharedPreferences(context)!!.getInt(SharedPreferencesKeys.BAR, 0)
             spinner.setSelection(sel, false)
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -105,7 +105,7 @@ class BottomBarView : ConstraintLayout {
                     onLocationChangedListener?.onItemClick(position, id)
                     alertDialog.hide()
 
-                    var editor = Util.getEditor(context)
+                    val editor = Util.getEditor(context)
                     editor?.putInt(SharedPreferencesKeys.BAR, position)
                     editor?.commit()
                 }
@@ -115,13 +115,13 @@ class BottomBarView : ConstraintLayout {
             }
         }
 
-        var sel = Util.getSharedPreferences(context)!!.getInt(SharedPreferencesKeys.BAR, 0)
+        val sel = Util.getSharedPreferences(context)!!.getInt(SharedPreferencesKeys.BAR, 0)
 
         setPosition(sel)
     }
 
     fun setPosition(position: Int) {
-        var orientation = when (position) {
+        val orientation = when (position) {
             1, 2 -> {
                 LinearLayout.VERTICAL
             }

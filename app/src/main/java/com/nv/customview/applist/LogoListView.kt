@@ -50,11 +50,11 @@ class LogoListView : HorizontalScrollView {
     private fun load() {
         linearLayout.removeAllViews()
 
-        var drawables = context.resources.obtainTypedArray(R.array.logos)
+        val drawables = context.resources.obtainTypedArray(R.array.logos)
         for (i in 0..drawables.length()) {
-            var drawable = drawables.getDrawable(i)
+            val drawable = drawables.getDrawable(i)
             if (drawable != null) {
-                var imageView = ImageView(context)
+                val imageView = ImageView(context)
                 imageView.setImageDrawable(drawable)
                 imageView.setOnClickListener {
                     onItemClickListener?.let { it(i, drawable) }

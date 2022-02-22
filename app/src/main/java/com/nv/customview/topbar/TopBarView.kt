@@ -38,7 +38,7 @@ class TopBarView : ConstraintLayout {
             callApp("com.android.settings")
         }
 
-        var timerTask = object : TimerTask() {
+        val timerTask = object : TimerTask() {
             override fun run() {
 //                val df = SimpleDateFormat("dd-MMMM-yyyy", Locale.getDefault())
                 val language = Locale.getDefault()

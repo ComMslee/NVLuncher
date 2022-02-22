@@ -10,7 +10,7 @@ object SettingUtil {
     }
 
     fun setAutoPlay(context: Context, isChecked: Boolean) {
-        var editor = Util.getEditor(context)
+        val editor = Util.getEditor(context)
         editor?.putBoolean(SharedPreferencesKeys.IS_AUTO_PLAY, isChecked)
         editor?.commit()
     }

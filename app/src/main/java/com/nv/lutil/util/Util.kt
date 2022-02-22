@@ -17,7 +17,7 @@ import java.util.regex.Pattern
 
 
 object Util {
-    val DEBUG = false
+    const val DEBUG = false
 
     fun getYouTubeId(youTubeUrl: String): String? {
         val pattern = "(?<=youtu.be/|watch\\?v=|/videos/|embed\\/)[^#\\&\\?]*"
@@ -35,30 +35,29 @@ object Util {
         var isCh = false
         var isSp = false
         val sps = charArrayOf('!', '@', '#', '$', '%', '^', '&', '*', '_', '-')
-        for (i in 0 until str.length) {
-            val c = str[i]
-            if (c in '0'..'9') {
+        str.forEach { element ->
+            if (element in '0'..'9') {
                 isNum = true
-            } else if (c in 'a'..'z' || c in 'A'..'Z') {
+            } else if (element in 'a'..'z' || element in 'A'..'Z') {
                 isCh = true
             } else {
                 isSp = true
-//                var canSp = false
-//                for (j in sps.indices) {
-//                    if (c == sps[j]) {
-//                        canSp = true
-//                    }
-//                }
-//                if (!canSp) {
-//                    return false
-//                }
+                //                var canSp = false
+                //                for (j in sps.indices) {
+                //                    if (c == sps[j]) {
+                //                        canSp = true
+                //                    }
+                //                }
+                //                if (!canSp) {
+                //                    return false
+                //                }
             }
         }
         return isNum && isCh && isSp
     }
 
     fun isEmail(email: String): Boolean {
-        var matcher = Patterns.EMAIL_ADDRESS.matcher(email)
+        val matcher = Patterns.EMAIL_ADDRESS.matcher(email)
 
         return matcher.matches()
     }
@@ -104,14 +103,19 @@ object Util {
         val sb = StringBuilder()
         for (i in arr.indices) {
             sb.append(cal(arr[i]))
-            if (arr.size - i == 4) {
-                sb.append("조")
-            } else if (arr.size - i == 3) {
-                sb.append("억")
-            } else if (arr.size - i == 2) {
-                sb.append("만")
-            } else if (arr.size - i == 1) {
-                sb.append("원")
+            when(arr.size - i) {
+                4 -> {
+                    sb.append("조")
+                }
+                3 -> {
+                    sb.append("억")
+                }
+                2 -> {
+                    sb.append("만")
+                }
+                1 -> {
+                    sb.append("원")
+                }
             }
         }
         return sb.toString()
@@ -121,7 +125,6 @@ object Util {
         var c: String? = "##,####"
         if (b != 0) {
             c += ","
-            c = c
         }
         for (i in 0 until b) {
             c += "#"
@@ -135,57 +138,62 @@ object Util {
         val l = c.size
         var r = ""
         for (i in c.indices) {
-            if (l - i == 4) {
-                when (c[i]) {
-                    '1' -> r += "일천"
-                    '2' -> r += "이천"
-                    '3' -> r += "삼천"
-                    '4' -> r += "사천"
-                    '5' -> r += "오천"
-                    '6' -> r += "육천"
-                    '7' -> r += "칠천"
-                    '8' -> r += "팔천"
-                    '9' -> r += "구천"
-                    '0' -> r += ""
+            when(l - i) {
+                4 -> {
+                    when (c[i]) {
+                        '1' -> r += "일천"
+                        '2' -> r += "이천"
+                        '3' -> r += "삼천"
+                        '4' -> r += "사천"
+                        '5' -> r += "오천"
+                        '6' -> r += "육천"
+                        '7' -> r += "칠천"
+                        '8' -> r += "팔천"
+                        '9' -> r += "구천"
+                        '0' -> r += ""
+                    }
                 }
-            } else if (l - i == 3) {
-                when (c[i]) {
-                    '1' -> r += "일백"
-                    '2' -> r += "이백"
-                    '3' -> r += "삼백"
-                    '4' -> r += "사백"
-                    '5' -> r += "오백"
-                    '6' -> r += "육백"
-                    '7' -> r += "칠백"
-                    '8' -> r += "팔백"
-                    '9' -> r += "구백"
-                    '0' -> r += ""
+                3 -> {
+                    when (c[i]) {
+                        '1' -> r += "일백"
+                        '2' -> r += "이백"
+                        '3' -> r += "삼백"
+                        '4' -> r += "사백"
+                        '5' -> r += "오백"
+                        '6' -> r += "육백"
+                        '7' -> r += "칠백"
+                        '8' -> r += "팔백"
+                        '9' -> r += "구백"
+                        '0' -> r += ""
+                    }
                 }
-            } else if (l - i == 2) {
-                when (c[i]) {
-                    '1' -> r += "일십"
-                    '2' -> r += "이십"
-                    '3' -> r += "삼십"
-                    '4' -> r += "사십"
-                    '5' -> r += "오십"
-                    '6' -> r += "육십"
-                    '7' -> r += "칠십"
-                    '8' -> r += "팔십"
-                    '9' -> r += "구십"
-                    '0' -> r += ""
+                2 -> {
+                    when (c[i]) {
+                        '1' -> r += "일십"
+                        '2' -> r += "이십"
+                        '3' -> r += "삼십"
+                        '4' -> r += "사십"
+                        '5' -> r += "오십"
+                        '6' -> r += "육십"
+                        '7' -> r += "칠십"
+                        '8' -> r += "팔십"
+                        '9' -> r += "구십"
+                        '0' -> r += ""
+                    }
                 }
-            } else if (l - i == 1) {
-                when (c[i]) {
-                    '1' -> r += "일"
-                    '2' -> r += "이"
-                    '3' -> r += "삼"
-                    '4' -> r += "사"
-                    '5' -> r += "오"
-                    '6' -> r += "육"
-                    '7' -> r += "칠"
-                    '8' -> r += "팔"
-                    '9' -> r += "구"
-                    '0' -> r += ""
+                1 -> {
+                    when (c[i]) {
+                        '1' -> r += "일"
+                        '2' -> r += "이"
+                        '3' -> r += "삼"
+                        '4' -> r += "사"
+                        '5' -> r += "오"
+                        '6' -> r += "육"
+                        '7' -> r += "칠"
+                        '8' -> r += "팔"
+                        '9' -> r += "구"
+                        '0' -> r += ""
+                    }
                 }
             }
         }
@@ -219,7 +227,7 @@ object Util {
 
         val models = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
         for (i in 0 until models.size) {
-            var model = models[i]
+            val model = models[i]
             if (packageManager.getLaunchIntentForPackage(model.packageName) != null) {
                 if (DEBUG) {
                     Log.e("mslee", "packageName ${model.packageName}") //mslee add log

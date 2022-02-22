@@ -10,7 +10,6 @@ import com.nv.customview.decoration.SpacesHorizontalItemDecoration
 import com.nv.lutil.util.Util
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.util.*
 import kotlin.reflect.KFunction2
 
 class AppHorizontalView : RecyclerView {

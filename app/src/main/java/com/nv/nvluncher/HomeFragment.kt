@@ -70,7 +70,7 @@ class HomeFragment : Fragment() {
         }
 
         main_image_view_logo.setOnLongClickListener {
-            var logoView = LogoListView(requireContext())
+            val logoView = LogoListView(requireContext())
             logoView.onItemClickListener = this::onLogoClick
 
             alertImages = AlertDialog.Builder(requireContext()).let {
@@ -112,7 +112,7 @@ class HomeFragment : Fragment() {
                 main_image_view_logo.setImageDrawable(drawables.getDrawable(logoPosition))
             }
 
-            var strApps = sharedPreferences.getString(SharedPreferencesKeys.APPS, "")
+            val strApps = sharedPreferences.getString(SharedPreferencesKeys.APPS, "")
             apps = ArrayList()
             if (strApps.isNullOrEmpty()) {
                 apps.add(makeAppDataNavi("n_com.android.settings"))
@@ -121,7 +121,7 @@ class HomeFragment : Fragment() {
 //                apps.add(makeAppDataInternet("n_acr.browser.barebones"))
                 apps.add(makeAppDataInternet("n_com.android.chrome"))
             } else {
-                var packages: ArrayList<String> =
+                val packages: ArrayList<String> =
                     Gson().fromJson(strApps, object : TypeToken<ArrayList<String>>() {}.type)
                 packages.forEachIndexed { index, it ->
                     apps.add(makeAppData(index, it))
@@ -138,7 +138,7 @@ class HomeFragment : Fragment() {
             packageName,
             Process.myUserHandle()
         ).forEach {
-            if (className.equals(it.provider.className)) {
+            if (className == it.provider.className) {
                 try {
                     loadWidget(it, requestCode)
                 } catch (e: Exception) {
@@ -199,7 +199,7 @@ class HomeFragment : Fragment() {
             widgetData.packageNameRight = appWidgetInfo.provider.packageName
         }
 
-        var editor = Util.getEditor(requireContext())
+        val editor = Util.getEditor(requireContext())
         editor?.putString(SharedPreferencesKeys.WIDGET, Gson().toJson(widgetData))
         editor?.commit()
         if (appWidgetInfo.configure != null) {
@@ -248,7 +248,7 @@ class HomeFragment : Fragment() {
 
 
     fun createWidget(appWidgetInfo: AppWidgetProviderInfo, requestCode: Int) {
-        var appWidgetId = mAppWidgetHost.allocateAppWidgetId()
+        val appWidgetId = mAppWidgetHost.allocateAppWidgetId()
 
         val allowed = mAppWidgetManager!!.bindAppWidgetIdIfAllowed(
             appWidgetId,
@@ -305,13 +305,13 @@ class HomeFragment : Fragment() {
         main_image_view_logo.setImageDrawable(model)
         alertImages.dismiss()
 
-        var editor = Util.getEditor(context!!)
+        val editor = Util.getEditor(context!!)
         editor?.putInt(SharedPreferencesKeys.LOGO, position)
         editor?.commit()
     }
 
     fun onAppClick(position: Int, model: AppData?) {
-        var packages = ArrayList<String>()
+        val packages = ArrayList<String>()
         apps.forEachIndexed { index, appData ->
             if (index == choice) {
                 packages.add(model!!.packageName)

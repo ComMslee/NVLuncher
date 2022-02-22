@@ -43,7 +43,7 @@ class AppListView : RecyclerView {
     }
 
     fun init() {
-        var appListAdapter = AppListAdapter()
+        val appListAdapter = AppListAdapter()
         appListAdapter.onItemClickListener = object : OnItemClickListener<AppData> {
             override fun onItemClick(position: Int, model: AppData) {
                 val launchIntent = context.packageManager
@@ -106,7 +106,7 @@ class AppListView : RecyclerView {
 
         synchronized(isLoading) {
             isLoading = true
-            var preAppData: ArrayList<AppData> = ArrayList()
+            val preAppData: ArrayList<AppData> = ArrayList()
             MainActivity.preAppData?.let {
                 preAppData.addAll(it)
                 MainActivity.preAppData = null
